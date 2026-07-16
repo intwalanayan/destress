@@ -1,0 +1,91 @@
+<svg viewBox="0 0 960 620" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect width="960" height="620" fill="#ffffff"/>
+  <text x="480" y="32" font-size="18" font-weight="bold" fill="#1f2937" text-anchor="middle">"8B parameters" vs "4,096 embedding dim" — two very different numbers</text>
+  <text x="480" y="54" font-size="12" fill="#6b7280" text-anchor="middle">One is a total count of stored weights. The other is a width used inside the model.</text>
+
+  <!-- LEFT: ONE VECTOR -->
+  <rect x="30" y="80" width="440" height="220" rx="10" fill="#e2eefc" stroke="#4a7fd4" stroke-width="1.5"/>
+  <text x="250" y="104" font-size="14" font-weight="bold" fill="#1f3a68" text-anchor="middle">One vector — the "4,096" is a WIDTH</text>
+
+  <!-- Draw 32 tiny boxes to represent 4096 (with ... in middle) -->
+  <g fill="#4a7fd4" stroke="#1f3a68">
+    <rect x="55" y="145" width="12" height="18"/>
+    <rect x="68" y="145" width="12" height="18"/>
+    <rect x="81" y="145" width="12" height="18"/>
+    <rect x="94" y="145" width="12" height="18"/>
+    <rect x="107" y="145" width="12" height="18"/>
+    <rect x="120" y="145" width="12" height="18"/>
+    <rect x="133" y="145" width="12" height="18"/>
+    <rect x="146" y="145" width="12" height="18"/>
+    <rect x="159" y="145" width="12" height="18"/>
+    <rect x="172" y="145" width="12" height="18"/>
+    <rect x="185" y="145" width="12" height="18"/>
+    <rect x="198" y="145" width="12" height="18"/>
+    <rect x="211" y="145" width="12" height="18"/>
+  </g>
+  <text x="243" y="158" font-size="16" fill="#4a7fd4">…</text>
+  <g fill="#4a7fd4" stroke="#1f3a68">
+    <rect x="275" y="145" width="12" height="18"/>
+    <rect x="288" y="145" width="12" height="18"/>
+    <rect x="301" y="145" width="12" height="18"/>
+    <rect x="314" y="145" width="12" height="18"/>
+    <rect x="327" y="145" width="12" height="18"/>
+    <rect x="340" y="145" width="12" height="18"/>
+    <rect x="353" y="145" width="12" height="18"/>
+    <rect x="366" y="145" width="12" height="18"/>
+    <rect x="379" y="145" width="12" height="18"/>
+    <rect x="392" y="145" width="12" height="18"/>
+    <rect x="405" y="145" width="12" height="18"/>
+    <rect x="418" y="145" width="12" height="18"/>
+    <rect x="431" y="145" width="12" height="18"/>
+  </g>
+  <text x="250" y="185" font-size="11" fill="#1f3a68" text-anchor="middle">← 4,096 numbers →</text>
+
+  <text x="55" y="220" font-size="12" font-weight="bold" fill="#1f3a68">What it is:</text>
+  <text x="55" y="238" font-size="11" fill="#1f3a68">A single vector of ~4,096 floats.</text>
+  <text x="55" y="254" font-size="11" fill="#1f3a68">One per token, at every layer.</text>
+
+  <text x="55" y="278" font-size="12" font-weight="bold" fill="#dc2626">Not stored — temporary!</text>
+  <text x="55" y="294" font-size="11" fill="#1f3a68">Computed fresh each forward pass, discarded.</text>
+
+  <!-- RIGHT: THE WHOLE MODEL -->
+  <rect x="490" y="80" width="440" height="220" rx="10" fill="#e8f5e2" stroke="#5aa845" stroke-width="1.5"/>
+  <text x="710" y="104" font-size="14" font-weight="bold" fill="#2d5c1e" text-anchor="middle">The whole model — the "8B" is a TOTAL COUNT</text>
+
+  <!-- Stacked bar of param groups -->
+  <g stroke="#2d5c1e">
+    <rect x="510" y="135" width="35" height="30" fill="#a8d8a8"/>
+    <rect x="545" y="135" width="85" height="30" fill="#5aa845"/>
+    <rect x="630" y="135" width="285" height="30" fill="#2d5c1e"/>
+  </g>
+  <text x="527" y="182" font-size="9" fill="#2d5c1e" text-anchor="middle">emb</text>
+  <text x="587" y="182" font-size="10" fill="#2d5c1e" text-anchor="middle">attention</text>
+  <text x="770" y="182" font-size="10" fill="#ffffff" text-anchor="middle">feed-forward</text>
+
+  <text x="710" y="210" font-size="11" fill="#2d5c1e" text-anchor="middle">→  8,000,000,000 individual weights, added up  ←</text>
+
+  <text x="510" y="238" font-size="12" font-weight="bold" fill="#2d5c1e">What it is:</text>
+  <text x="510" y="256" font-size="11" fill="#2d5c1e">The sum of every learned number in every matrix,</text>
+  <text x="510" y="271" font-size="11" fill="#2d5c1e">across the whole network.</text>
+  <text x="510" y="292" font-size="12" font-weight="bold" fill="#059669">Stored — this is what you download (~5 GB at 4-bit).</text>
+
+  <!-- BOTTOM: HOW THEY CONNECT -->
+  <rect x="30" y="320" width="900" height="280" rx="10" fill="#fff8e6" stroke="#e08c2f" stroke-width="1.5"/>
+  <text x="50" y="344" font-size="15" font-weight="bold" fill="#7a4408">How they connect: 4,096 is one dimension inside many of the matrices that make up the 8B</text>
+
+  <text x="50" y="370" font-size="12" fill="#7a4408">Every weight matrix in a transformer uses this "4,096 width" as one of its dimensions:</text>
+
+  <g font-family="Menlo, monospace" font-size="12" fill="#7a4408">
+    <text x="60" y="398"><tspan font-weight="bold">Embedding table:</tspan>            152,000  ×  4,096                    =   623 M weights   (~ 8%)</text>
+    <text x="60" y="422"><tspan font-weight="bold">Q, K, V, O per attention layer:</tspan>  ~4,096  ×  4,096  each × 36 layers  =   1.5 B weights   (~19%)</text>
+    <text x="60" y="446"><tspan font-weight="bold">FFN up + gate + down per layer:</tspan>   4,096  ×  ~12,000  × 36 layers    =   5.4 B weights   (~68%)</text>
+    <text x="60" y="470"><tspan font-weight="bold">LayerNorms &amp; biases:</tspan>          small                                        ≈    50 M weights   (~ 1%)</text>
+  </g>
+
+  <line x1="50" y1="486" x2="910" y2="486" stroke="#7a4408" stroke-width="0.7"/>
+  <text x="60" y="508" font-size="13" font-weight="bold" fill="#7a4408" font-family="Menlo, monospace">Total:                                                              ≈  7.5–8 B weights</text>
+
+  <text x="50" y="542" font-size="12" fill="#7a4408"><tspan font-weight="bold">The mental picture:</tspan> the model is a big collection of matrices. Each matrix has dimensions (rows × cols).</text>
+  <text x="50" y="560" font-size="12" fill="#7a4408">4,096 is the "internal lane width" that shows up in most of them. 8B is what you get when you count every number</text>
+  <text x="50" y="578" font-size="12" fill="#7a4408">inside every matrix and add them all together. Different quantities, same underlying model.</text>
+</svg>

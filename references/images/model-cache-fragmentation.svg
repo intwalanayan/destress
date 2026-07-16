@@ -1,0 +1,73 @@
+<svg viewBox="0 0 940 620" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect width="940" height="620" fill="#ffffff"/>
+  <text x="470" y="32" font-size="18" font-weight="bold" fill="#1f2937" text-anchor="middle">Where each tool caches models — and why you end up with duplicates</text>
+  <text x="470" y="54" font-size="12" fill="#6b7280" text-anchor="middle">There is no universal "model cache" today. Each tool ships its own directory + layout.</text>
+
+  <!-- LM Studio -->
+  <rect x="30" y="80" width="285" height="220" rx="12" fill="#f3e8fd" stroke="#9b59d0" stroke-width="2"/>
+  <text x="172" y="107" font-size="15" font-weight="bold" fill="#5b2d85" text-anchor="middle">LM Studio</text>
+
+  <text x="45" y="132" font-size="11" font-weight="bold" fill="#5b2d85">Cache path (default):</text>
+  <text x="45" y="150" font-size="11" font-family="Menlo, monospace" fill="#5b2d85">~/.lmstudio/models/</text>
+
+  <text x="45" y="180" font-size="11" font-weight="bold" fill="#5b2d85">Layout:</text>
+  <text x="45" y="197" font-size="10" font-family="Menlo, monospace" fill="#5b2d85">publisher/</text>
+  <text x="55" y="212" font-size="10" font-family="Menlo, monospace" fill="#5b2d85">  repo-name/</text>
+  <text x="65" y="227" font-size="10" font-family="Menlo, monospace" fill="#5b2d85">    model.gguf</text>
+
+  <text x="45" y="257" font-size="11" font-weight="bold" fill="#5b2d85">Format(s):</text>
+  <text x="45" y="274" font-size="11" fill="#5b2d85">GGUF or MLX (directory)</text>
+
+  <!-- Ollama -->
+  <rect x="325" y="80" width="285" height="220" rx="12" fill="#e2eefc" stroke="#4a7fd4" stroke-width="2"/>
+  <text x="467" y="107" font-size="15" font-weight="bold" fill="#1f3a68" text-anchor="middle">Ollama</text>
+
+  <text x="340" y="132" font-size="11" font-weight="bold" fill="#1f3a68">Cache path:</text>
+  <text x="340" y="150" font-size="11" font-family="Menlo, monospace" fill="#1f3a68">~/.ollama/models/</text>
+
+  <text x="340" y="180" font-size="11" font-weight="bold" fill="#1f3a68">Layout (Docker-like):</text>
+  <text x="340" y="197" font-size="10" font-family="Menlo, monospace" fill="#1f3a68">blobs/</text>
+  <text x="350" y="212" font-size="10" font-family="Menlo, monospace" fill="#1f3a68">  sha256-a3f9…  (opaque)</text>
+  <text x="340" y="227" font-size="10" font-family="Menlo, monospace" fill="#1f3a68">manifests/</text>
+  <text x="350" y="242" font-size="10" font-family="Menlo, monospace" fill="#1f3a68">  qwen3/8b → sha256s</text>
+
+  <text x="340" y="272" font-size="11" font-weight="bold" fill="#1f3a68">Format:</text>
+  <text x="340" y="289" font-size="11" fill="#1f3a68">GGUF, repackaged as blobs</text>
+
+  <!-- MLX-LM / HF cache -->
+  <rect x="620" y="80" width="285" height="220" rx="12" fill="#e8f5e2" stroke="#5aa845" stroke-width="2"/>
+  <text x="762" y="107" font-size="15" font-weight="bold" fill="#2d5c1e" text-anchor="middle">MLX-LM / Transformers</text>
+
+  <text x="635" y="132" font-size="11" font-weight="bold" fill="#2d5c1e">Cache path (HF hub):</text>
+  <text x="635" y="150" font-size="10" font-family="Menlo, monospace" fill="#2d5c1e">~/.cache/huggingface/hub/</text>
+
+  <text x="635" y="180" font-size="11" font-weight="bold" fill="#2d5c1e">Layout (HF standard):</text>
+  <text x="635" y="197" font-size="10" font-family="Menlo, monospace" fill="#2d5c1e">models--publisher--repo/</text>
+  <text x="645" y="212" font-size="10" font-family="Menlo, monospace" fill="#2d5c1e">  snapshots/</text>
+  <text x="655" y="227" font-size="10" font-family="Menlo, monospace" fill="#2d5c1e">    &lt;commit&gt;/config.json</text>
+  <text x="655" y="242" font-size="10" font-family="Menlo, monospace" fill="#2d5c1e">    &lt;commit&gt;/*.safetensors</text>
+
+  <text x="635" y="272" font-size="11" font-weight="bold" fill="#2d5c1e">Format:</text>
+  <text x="635" y="289" font-size="11" fill="#2d5c1e">MLX or safetensors (originals)</text>
+
+  <!-- WHY THEY DON'T SHARE -->
+  <rect x="30" y="320" width="875" height="90" rx="10" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+  <text x="50" y="343" font-size="14" font-weight="bold" fill="#78350f">Two reasons the same "Qwen3-8B" ends up downloaded three times</text>
+  <text x="50" y="365" font-size="12" fill="#78350f"><tspan font-weight="bold">1.  Different formats</tspan> — Ollama's <tspan font-family="Menlo, monospace">qwen3:8b</tspan> is GGUF; <tspan font-family="Menlo, monospace">mlx-community/Qwen3-8B-4bit</tspan> is MLX. Genuinely different bytes on disk, both ~5 GB.</text>
+  <text x="50" y="386" font-size="12" fill="#78350f"><tspan font-weight="bold">2.  Different layouts</tspan> — even with the same GGUF file, LM Studio uses a plain <tspan font-family="Menlo, monospace">publisher/repo/</tspan> tree while Ollama uses content-addressed blobs.</text>
+  <text x="50" y="404" font-size="12" fill="#78350f">There is no cross-tool standard yet. Each tool's cache is its own island.</text>
+
+  <!-- WHAT CAN BE SHARED -->
+  <rect x="30" y="430" width="875" height="165" rx="10" fill="#e8f5e2" stroke="#5aa845" stroke-width="1.5"/>
+  <text x="50" y="453" font-size="14" font-weight="bold" fill="#2d5c1e">What CAN share, if you configure it</text>
+
+  <text x="50" y="478" font-size="12" fill="#2d5c1e"><tspan font-weight="bold">• GGUF family shares easily.</tspan> LM Studio, llama.cpp, Jan, KoboldCpp can all read the same <tspan font-family="Menlo, monospace">.gguf</tspan> files.</text>
+  <text x="60" y="495" font-size="11" fill="#2d5c1e">Point them all at one folder (LM Studio → Settings → Models Directory). Reuses one physical copy across GUI + CLI runners.</text>
+
+  <text x="50" y="519" font-size="12" fill="#2d5c1e"><tspan font-weight="bold">• LM Studio ↔ MLX-LM.</tspan> LM Studio can be pointed at <tspan font-family="Menlo, monospace">~/.cache/huggingface/hub/</tspan>, so both tools share MLX builds.</text>
+
+  <text x="50" y="543" font-size="12" fill="#2d5c1e"><tspan font-weight="bold">• Ollama is the odd one out.</tspan> Its blob store isn't drop-in compatible. But you can <tspan font-style="italic">import</tspan> an existing GGUF once with a Modelfile:</text>
+  <text x="60" y="562" font-size="11" font-family="Menlo, monospace" fill="#2d5c1e">echo 'FROM ~/.lmstudio/models/…/qwen3-8b-q4.gguf' &gt; Modelfile</text>
+  <text x="60" y="577" font-size="11" font-family="Menlo, monospace" fill="#2d5c1e">ollama create qwen3-8b-local -f Modelfile</text>
+  <text x="60" y="592" font-size="11" fill="#6b7280" font-style="italic">Ollama then references the existing file — no re-download, but it does copy to its own blob.</text>
+</svg>

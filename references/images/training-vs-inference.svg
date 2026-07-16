@@ -1,0 +1,56 @@
+<svg viewBox="0 0 860 430" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect width="860" height="430" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L9,3 L0,6 Z" fill="#44546a"/>
+    </marker>
+  </defs>
+
+  <!-- TRAINING -->
+  <text x="30" y="40" font-size="20" font-weight="bold" fill="#8a4b08">TRAINING — done once, expensive (like compiling)</text>
+  <rect x="30" y="60" width="170" height="80" rx="10" fill="#fdeede" stroke="#e08c2f" stroke-width="2"/>
+  <text x="115" y="95" font-size="14" font-weight="bold" fill="#7a4408" text-anchor="middle">Lots of DATA</text>
+  <text x="115" y="115" font-size="12" fill="#7a4408" text-anchor="middle">examples + answers</text>
+
+  <rect x="30" y="150" width="170" height="60" rx="10" fill="#fdeede" stroke="#e08c2f" stroke-width="2"/>
+  <text x="115" y="178" font-size="14" font-weight="bold" fill="#7a4408" text-anchor="middle">ARCHITECTURE</text>
+  <text x="115" y="196" font-size="12" fill="#7a4408" text-anchor="middle">empty wiring, random weights</text>
+
+  <path d="M200 100 L255 125" stroke="#44546a" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M200 180 L255 150" stroke="#44546a" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="260" y="95" width="230" height="90" rx="10" fill="#fbe0c2" stroke="#c97a1e" stroke-width="2"/>
+  <text x="375" y="125" font-size="15" font-weight="bold" fill="#6a3b06" text-anchor="middle">TRAINING LOOP</text>
+  <text x="375" y="145" font-size="12" fill="#6a3b06" text-anchor="middle">guess → measure error (loss)</text>
+  <text x="375" y="163" font-size="12" fill="#6a3b06" text-anchor="middle">→ adjust weights → repeat millions of times</text>
+
+  <path d="M490 140 L555 140" stroke="#44546a" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="560" y="95" width="270" height="90" rx="10" fill="#e8f5e2" stroke="#5aa845" stroke-width="2.5"/>
+  <text x="695" y="127" font-size="15" font-weight="bold" fill="#2d5c1e" text-anchor="middle">TRAINED MODEL</text>
+  <text x="695" y="147" font-size="12" fill="#2d5c1e" text-anchor="middle">architecture + learned weights</text>
+  <text x="695" y="165" font-size="12" fill="#2d5c1e" text-anchor="middle">(a file: billions of numbers)</text>
+
+  <!-- divider -->
+  <line x1="30" y1="235" x2="830" y2="235" stroke="#cccccc" stroke-width="1" stroke-dasharray="6,6"/>
+
+  <!-- INFERENCE -->
+  <text x="30" y="275" font-size="20" font-weight="bold" fill="#1f3a68">INFERENCE — done constantly, cheap (like running the binary)</text>
+
+  <rect x="30" y="300" width="180" height="70" rx="10" fill="#e2eefc" stroke="#4a7fd4" stroke-width="2"/>
+  <text x="120" y="330" font-size="14" font-weight="bold" fill="#1f3a68" text-anchor="middle">YOUR INPUT</text>
+  <text x="120" y="350" font-size="12" fill="#1f3a68" text-anchor="middle">"Explain LoRA…"</text>
+
+  <path d="M210 335 L275 335" stroke="#44546a" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="280" y="295" width="270" height="80" rx="10" fill="#e8f5e2" stroke="#5aa845" stroke-width="2.5"/>
+  <text x="415" y="325" font-size="15" font-weight="bold" fill="#2d5c1e" text-anchor="middle">TRAINED MODEL</text>
+  <text x="415" y="345" font-size="12" fill="#2d5c1e" text-anchor="middle">weights FROZEN — nothing changes,</text>
+  <text x="415" y="362" font-size="12" fill="#2d5c1e" text-anchor="middle">just math flowing through</text>
+
+  <path d="M550 335 L615 335" stroke="#44546a" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="620" y="300" width="210" height="70" rx="10" fill="#e2eefc" stroke="#4a7fd4" stroke-width="2"/>
+  <text x="725" y="330" font-size="14" font-weight="bold" fill="#1f3a68" text-anchor="middle">OUTPUT</text>
+  <text x="725" y="350" font-size="12" fill="#1f3a68" text-anchor="middle">"LoRA is a cheap way to…"</text>
+</svg>

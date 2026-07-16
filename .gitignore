@@ -1,0 +1,25 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# ML artifacts — regeneratable, too big to commit
+learn/04-finetune/adapters/
+learn/04-finetune/qwen3-pirate/
+learn/03-train/mnist_ckpt.pt
+learn/03-train/mnist_ckpt.safetensors
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# Env / secrets (in case you add any later)
+.env
+*.env.local

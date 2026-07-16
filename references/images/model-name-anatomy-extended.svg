@@ -1,0 +1,82 @@
+<svg viewBox="0 0 940 660" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect width="940" height="660" fill="#ffffff"/>
+  <text x="470" y="32" font-size="18" font-weight="bold" fill="#1f2937" text-anchor="middle">Decoding a full Hugging Face model name — worked example</text>
+
+  <!-- MAIN EXAMPLE -->
+  <rect x="30" y="60" width="880" height="230" rx="12" fill="#fff8e6" stroke="#e08c2f" stroke-width="1.5"/>
+
+  <!-- Big name centered -->
+  <text x="470" y="120" font-size="22" font-family="Menlo, monospace" fill="#1f2937" text-anchor="middle">
+    <tspan fill="#9b59d0" font-weight="bold">mlx-community</tspan><tspan fill="#6b7280">/</tspan><tspan fill="#dc2626" font-weight="bold">gemma-3</tspan><tspan fill="#6b7280">-</tspan><tspan fill="#059669" font-weight="bold">27b</tspan><tspan fill="#6b7280">-</tspan><tspan fill="#4a7fd4" font-weight="bold">it</tspan><tspan fill="#6b7280">-</tspan><tspan fill="#e08c2f" font-weight="bold">qat</tspan><tspan fill="#6b7280">-</tspan><tspan fill="#7c3aed" font-weight="bold">4bit</tspan><tspan fill="#6b7280">-</tspan><tspan fill="#0891b2" font-weight="bold">DWQ</tspan>
+  </text>
+
+  <!-- Legend blocks -->
+  <g font-size="11">
+    <rect x="50" y="160" width="14" height="14" fill="#9b59d0"/>
+    <text x="72" y="172" fill="#1f2937"><tspan font-weight="bold">publisher</tspan> — who packaged &amp; uploaded (mlx-community = Apple-format converters)</text>
+
+    <rect x="50" y="182" width="14" height="14" fill="#dc2626"/>
+    <text x="72" y="194" fill="#1f2937"><tspan font-weight="bold">family + generation</tspan> — Google's Gemma, 3rd generation</text>
+
+    <rect x="50" y="204" width="14" height="14" fill="#059669"/>
+    <text x="72" y="216" fill="#1f2937"><tspan font-weight="bold">size</tspan> — 27 billion parameters</text>
+
+    <rect x="50" y="226" width="14" height="14" fill="#4a7fd4"/>
+    <text x="72" y="238" fill="#1f2937"><tspan font-weight="bold">variant</tspan> — "it" = Instruction-Tuned (chat-ready)</text>
+
+    <rect x="50" y="248" width="14" height="14" fill="#e08c2f"/>
+    <text x="72" y="260" fill="#1f2937"><tspan font-weight="bold">training modifier</tspan> — "qat" = Quantization-Aware Training (built to survive 4-bit)</text>
+
+    <rect x="50" y="270" width="14" height="14" fill="#7c3aed"/>
+    <text x="72" y="282" fill="#1f2937"><tspan font-weight="bold">quantization</tspan> — 4 bits per weight</text>
+
+    <rect x="500" y="270" width="14" height="14" fill="#0891b2"/>
+    <text x="522" y="282" fill="#1f2937"><tspan font-weight="bold">quantization scheme</tspan> — DWQ = Dynamic Weight Quantization</text>
+  </g>
+
+  <!-- MORE EXAMPLES -->
+  <text x="30" y="325" font-size="15" font-weight="bold" fill="#1f2937">Three more real names, decoded left-to-right:</text>
+
+  <!-- Example 1 -->
+  <rect x="30" y="345" width="880" height="80" rx="10" fill="#e2eefc" stroke="#4a7fd4" stroke-width="1"/>
+  <text x="45" y="368" font-size="15" font-family="Menlo, monospace" fill="#1f3a68" font-weight="bold">bartowski/Qwen2.5-Coder-7B-Instruct-GGUF</text>
+  <text x="45" y="390" font-size="11" fill="#1f3a68">
+    <tspan font-weight="bold">bartowski</tspan> (packager, well-known GGUF publisher) →
+    <tspan font-weight="bold">Qwen2.5</tspan> (family) →
+    <tspan font-weight="bold">Coder</tspan> (code-specialised variant) →
+    <tspan font-weight="bold">7B</tspan> (params) →
+  </text>
+  <text x="45" y="408" font-size="11" fill="#1f3a68">
+    <tspan font-weight="bold">Instruct</tspan> (chat-tuned) →
+    <tspan font-weight="bold">GGUF</tspan> (llama.cpp format — actual quantization tag is inside the file: Q4_K_M, Q5_K_S, etc.)
+  </text>
+
+  <!-- Example 2 -->
+  <rect x="30" y="435" width="880" height="80" rx="10" fill="#e8f5e2" stroke="#5aa845" stroke-width="1"/>
+  <text x="45" y="458" font-size="15" font-family="Menlo, monospace" fill="#2d5c1e" font-weight="bold">google/gemma-3-e4b-it</text>
+  <text x="45" y="480" font-size="11" fill="#2d5c1e">
+    <tspan font-weight="bold">google</tspan> (original team) →
+    <tspan font-weight="bold">gemma-3</tspan> (family + gen) →
+    <tspan font-weight="bold">e4b</tspan> (Google's "effective 4B" — a sparse/MoE variant with 4B of active params) →
+  </text>
+  <text x="45" y="498" font-size="11" fill="#2d5c1e">
+    <tspan font-weight="bold">it</tspan> (Instruction-Tuned). No quantization suffix → full precision safetensors (needs re-quantizing before use on 18 GB).
+  </text>
+
+  <!-- Example 3 -->
+  <rect x="30" y="525" width="880" height="80" rx="10" fill="#f3e8fd" stroke="#9b59d0" stroke-width="1"/>
+  <text x="45" y="548" font-size="15" font-family="Menlo, monospace" fill="#5b2d85" font-weight="bold">mlx-community/DeepSeek-R1-Distill-Qwen-7B-4bit-AWQ</text>
+  <text x="45" y="570" font-size="11" fill="#5b2d85">
+    <tspan font-weight="bold">mlx-community</tspan> →
+    <tspan font-weight="bold">DeepSeek-R1</tspan> (family — reasoning model) →
+    <tspan font-weight="bold">Distill</tspan> (knowledge-distilled) →
+    <tspan font-weight="bold">Qwen-7B</tspan> (into a Qwen-7B) →
+  </text>
+  <text x="45" y="588" font-size="11" fill="#5b2d85">
+    <tspan font-weight="bold">4bit</tspan> (bits per weight) →
+    <tspan font-weight="bold">AWQ</tspan> (Activation-aware Weight Quantization — a specific compression algorithm)
+  </text>
+
+  <!-- Bottom tip -->
+  <text x="30" y="640" font-size="11" font-style="italic" fill="#6b7280">Reading rule: <tspan font-weight="bold">publisher / family - gen - size - variant - training-modifier - bits - quant-scheme</tspan>. Not every name has every part.</text>
+</svg>

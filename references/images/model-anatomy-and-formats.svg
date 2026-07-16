@@ -1,0 +1,97 @@
+<svg viewBox="0 0 940 620" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect width="940" height="620" fill="#ffffff"/>
+  <text x="470" y="32" font-size="18" font-weight="bold" fill="#1f2937" text-anchor="middle">What "downloading a model" actually gives you — and the three flavors on Apple Silicon</text>
+
+  <defs>
+    <marker id="ar" markerWidth="9" markerHeight="9" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+
+  <!-- STEP 1: HUGGING FACE REPO -->
+  <text x="150" y="72" font-size="14" font-weight="bold" fill="#1f3a68" text-anchor="middle">1. Hugging Face model page</text>
+  <text x="150" y="90" font-size="11" fill="#6b7280" text-anchor="middle">= a folder of files</text>
+
+  <rect x="30" y="105" width="240" height="200" rx="10" fill="#fff8e6" stroke="#e08c2f" stroke-width="1.5"/>
+  <text x="150" y="128" font-size="12" font-weight="bold" fill="#7a4408" text-anchor="middle">Qwen/Qwen3-8B/</text>
+
+  <g font-family="Menlo, monospace" font-size="11" fill="#7a4408">
+    <text x="45" y="150">├─ config.json</text>
+    <text x="55" y="164" font-size="9" fill="#6b7280">the "wiring diagram" (JSON)</text>
+
+    <text x="45" y="185">├─ tokenizer.json</text>
+    <text x="55" y="199" font-size="9" fill="#6b7280">word ↔ number dictionary</text>
+
+    <text x="45" y="220">├─ model-00001-of-N.safetensors</text>
+    <text x="45" y="236">├─ model-00002-of-N.safetensors</text>
+    <text x="45" y="252">└─ …</text>
+    <text x="55" y="270" font-size="9" fill="#6b7280">the actual billions of numbers</text>
+    <text x="55" y="283" font-size="9" fill="#6b7280">split across many binary files</text>
+  </g>
+
+  <text x="310" y="205" font-size="26" fill="#94a3b8">→</text>
+
+  <!-- STEP 2: THREE FORMAT FLAVORS -->
+  <text x="530" y="72" font-size="14" font-weight="bold" fill="#1f3a68" text-anchor="middle">2. Repackaged into one of three formats</text>
+  <text x="530" y="90" font-size="11" fill="#6b7280" text-anchor="middle">depending on which runner will use it</text>
+
+  <!-- safetensors -->
+  <rect x="360" y="105" width="330" height="60" rx="8" fill="#e2eefc" stroke="#4a7fd4" stroke-width="1.5"/>
+  <text x="375" y="127" font-size="13" font-weight="bold" fill="#1f3a68">safetensors  (the original)</text>
+  <text x="375" y="145" font-size="10" fill="#1f3a68">full-precision weights, multi-file, works with PyTorch / MLX-LM /</text>
+  <text x="375" y="158" font-size="10" fill="#1f3a68">Transformers. Big files, most flexible for training/fine-tuning.</text>
+
+  <!-- GGUF -->
+  <rect x="360" y="175" width="330" height="60" rx="8" fill="#fdeede" stroke="#e08c2f" stroke-width="1.5"/>
+  <text x="375" y="197" font-size="13" font-weight="bold" fill="#7a4408">GGUF  (single-file, quantized, portable)</text>
+  <text x="375" y="215" font-size="10" fill="#7a4408">one .gguf file, weights + tokenizer + chat template inside.</text>
+  <text x="375" y="228" font-size="10" fill="#7a4408">Runs on Ollama, LM Studio, llama.cpp. Works on any platform.</text>
+
+  <!-- MLX -->
+  <rect x="360" y="245" width="330" height="60" rx="8" fill="#e8f5e2" stroke="#5aa845" stroke-width="1.5"/>
+  <text x="375" y="267" font-size="13" font-weight="bold" fill="#2d5c1e">MLX  (Apple-native, fastest here)</text>
+  <text x="375" y="285" font-size="10" fill="#2d5c1e">a directory of quantized safetensors + config, tuned for Apple GPU.</text>
+  <text x="375" y="298" font-size="10" fill="#2d5c1e">Runs on MLX-LM and LM Studio. Apple Silicon only. 15–40% faster.</text>
+
+  <text x="720" y="205" font-size="26" fill="#94a3b8">→</text>
+
+  <!-- STEP 3: RUNNER LOADS IT -->
+  <text x="820" y="72" font-size="14" font-weight="bold" fill="#1f3a68" text-anchor="middle">3. Runner loads it</text>
+  <text x="820" y="90" font-size="11" fill="#6b7280" text-anchor="middle">into RAM</text>
+
+  <rect x="750" y="105" width="160" height="200" rx="10" fill="#f3e8fd" stroke="#9b59d0" stroke-width="1.5"/>
+  <text x="830" y="128" font-size="12" font-weight="bold" fill="#5b2d85" text-anchor="middle">18 GB unified RAM</text>
+  <rect x="765" y="145" width="130" height="80" rx="6" fill="#ffffff" stroke="#9b59d0"/>
+  <text x="830" y="163" font-size="10" fill="#5b2d85" text-anchor="middle">wiring built</text>
+  <text x="830" y="178" font-size="10" fill="#5b2d85" text-anchor="middle">from config.json</text>
+  <text x="830" y="198" font-size="10" fill="#5b2d85" text-anchor="middle">weights loaded</text>
+  <text x="830" y="213" font-size="10" fill="#5b2d85" text-anchor="middle">from file</text>
+
+  <rect x="765" y="235" width="130" height="50" rx="6" fill="#f3e8fd" stroke="#9b59d0" stroke-dasharray="3,3"/>
+  <text x="830" y="253" font-size="10" fill="#5b2d85" text-anchor="middle">KV cache (grows</text>
+  <text x="830" y="268" font-size="10" fill="#5b2d85" text-anchor="middle">as chat gets longer)</text>
+
+  <!-- BOTTOM: WHERE FORMATS COME FROM -->
+  <rect x="30" y="345" width="880" height="255" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/>
+  <text x="50" y="372" font-size="14" font-weight="bold" fill="#1f2937">Who publishes what</text>
+
+  <text x="50" y="400" font-size="12" fill="#1f2937">Same base model, different publishers repackage it into different formats:</text>
+
+  <g font-family="Menlo, monospace" font-size="11" fill="#1f2937">
+    <text x="50" y="430">Qwen/Qwen3-8B</text>
+    <text x="350" y="430" fill="#4a7fd4">safetensors (original, from Alibaba's Qwen team)</text>
+
+    <text x="50" y="455">bartowski/Qwen3-8B-GGUF</text>
+    <text x="350" y="455" fill="#e08c2f">GGUF quantized (community packager, portable)</text>
+
+    <text x="50" y="480">mlx-community/Qwen3-8B-4bit</text>
+    <text x="350" y="480" fill="#5aa845">MLX quantized (Apple-optimized, fastest on Mac)</text>
+
+    <text x="50" y="505">unsloth/Qwen3-8B-GGUF</text>
+    <text x="350" y="505" fill="#e08c2f">GGUF quantized (another community packager)</text>
+  </g>
+
+  <rect x="45" y="530" width="850" height="55" rx="8" fill="#fef3c7" stroke="#d97706" stroke-width="1"/>
+  <text x="60" y="552" font-size="12" font-weight="bold" fill="#78350f">Rule of thumb for you (Mac, 18 GB):</text>
+  <text x="60" y="571" font-size="11" fill="#78350f">Ollama pulls a GGUF automatically. LM Studio &amp; MLX-LM prefer MLX builds (search for "mlx-community" on Hugging Face).</text>
+</svg>

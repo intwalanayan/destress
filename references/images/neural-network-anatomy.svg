@@ -1,0 +1,107 @@
+<svg viewBox="0 0 900 640" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect width="900" height="640" fill="#ffffff"/>
+  <text x="450" y="30" font-size="18" font-weight="bold" fill="#1f2937" text-anchor="middle">Anatomy of a neural network: shape + one neuron + the code that builds it</text>
+
+  <!-- ==== LEFT: NETWORK GRAPH ==== -->
+  <text x="30" y="65" font-size="14" font-weight="bold" fill="#1f3a68">The whole network (3 → 4 → 4 → 2)</text>
+
+  <!-- Layer labels -->
+  <text x="80" y="90" font-size="11" fill="#6b7280" text-anchor="middle">Input</text>
+  <text x="200" y="90" font-size="11" fill="#6b7280" text-anchor="middle">Hidden 1</text>
+  <text x="320" y="90" font-size="11" fill="#6b7280" text-anchor="middle">Hidden 2</text>
+  <text x="440" y="90" font-size="11" fill="#6b7280" text-anchor="middle">Output</text>
+
+  <!-- Connections (drawn first so neurons cover them) -->
+  <g stroke="#c7d2e0" stroke-width="0.9">
+    <!-- Input -> Hidden 1 -->
+    <line x1="80" y1="130" x2="200" y2="110"/><line x1="80" y1="130" x2="200" y2="180"/><line x1="80" y1="130" x2="200" y2="250"/><line x1="80" y1="130" x2="200" y2="320"/>
+    <line x1="80" y1="200" x2="200" y2="110"/><line x1="80" y1="200" x2="200" y2="180"/><line x1="80" y1="200" x2="200" y2="250"/><line x1="80" y1="200" x2="200" y2="320"/>
+    <line x1="80" y1="270" x2="200" y2="110"/><line x1="80" y1="270" x2="200" y2="180"/><line x1="80" y1="270" x2="200" y2="250"/><line x1="80" y1="270" x2="200" y2="320"/>
+    <!-- Hidden 1 -> Hidden 2 -->
+    <line x1="200" y1="110" x2="320" y2="110"/><line x1="200" y1="110" x2="320" y2="180"/><line x1="200" y1="110" x2="320" y2="250"/><line x1="200" y1="110" x2="320" y2="320"/>
+    <line x1="200" y1="180" x2="320" y2="110"/><line x1="200" y1="180" x2="320" y2="180"/><line x1="200" y1="180" x2="320" y2="250"/><line x1="200" y1="180" x2="320" y2="320"/>
+    <line x1="200" y1="250" x2="320" y2="110"/><line x1="200" y1="250" x2="320" y2="180"/><line x1="200" y1="250" x2="320" y2="250"/><line x1="200" y1="250" x2="320" y2="320"/>
+    <line x1="200" y1="320" x2="320" y2="110"/><line x1="200" y1="320" x2="320" y2="180"/><line x1="200" y1="320" x2="320" y2="250"/><line x1="200" y1="320" x2="320" y2="320"/>
+    <!-- Hidden 2 -> Output -->
+    <line x1="320" y1="110" x2="440" y2="180"/><line x1="320" y1="110" x2="440" y2="250"/>
+    <line x1="320" y1="180" x2="440" y2="180"/><line x1="320" y1="180" x2="440" y2="250"/>
+    <line x1="320" y1="250" x2="440" y2="180"/><line x1="320" y1="250" x2="440" y2="250"/>
+    <line x1="320" y1="320" x2="440" y2="180"/><line x1="320" y1="320" x2="440" y2="250"/>
+  </g>
+
+  <!-- Neurons -->
+  <g>
+    <!-- Input -->
+    <circle cx="80" cy="130" r="14" fill="#e2eefc" stroke="#4a7fd4" stroke-width="1.5"/>
+    <circle cx="80" cy="200" r="14" fill="#e2eefc" stroke="#4a7fd4" stroke-width="1.5"/>
+    <circle cx="80" cy="270" r="14" fill="#e2eefc" stroke="#4a7fd4" stroke-width="1.5"/>
+    <!-- Hidden 1 (highlight one) -->
+    <circle cx="200" cy="110" r="14" fill="#e8f5e2" stroke="#5aa845" stroke-width="1.5"/>
+    <circle cx="200" cy="180" r="16" fill="#fff3c9" stroke="#d38a00" stroke-width="2.5"/>
+    <circle cx="200" cy="250" r="14" fill="#e8f5e2" stroke="#5aa845" stroke-width="1.5"/>
+    <circle cx="200" cy="320" r="14" fill="#e8f5e2" stroke="#5aa845" stroke-width="1.5"/>
+    <!-- Hidden 2 -->
+    <circle cx="320" cy="110" r="14" fill="#e8f5e2" stroke="#5aa845" stroke-width="1.5"/>
+    <circle cx="320" cy="180" r="14" fill="#e8f5e2" stroke="#5aa845" stroke-width="1.5"/>
+    <circle cx="320" cy="250" r="14" fill="#e8f5e2" stroke="#5aa845" stroke-width="1.5"/>
+    <circle cx="320" cy="320" r="14" fill="#e8f5e2" stroke="#5aa845" stroke-width="1.5"/>
+    <!-- Output -->
+    <circle cx="440" cy="180" r="14" fill="#f3e8fd" stroke="#9b59d0" stroke-width="1.5"/>
+    <circle cx="440" cy="250" r="14" fill="#f3e8fd" stroke="#9b59d0" stroke-width="1.5"/>
+  </g>
+
+  <text x="80" y="310" font-size="11" fill="#4a7fd4" text-anchor="middle">3 numbers in</text>
+  <text x="440" y="290" font-size="11" fill="#9b59d0" text-anchor="middle">2 numbers out</text>
+
+  <!-- Arrow pointing at highlighted neuron -->
+  <path d="M 260 175 L 220 178" stroke="#d38a00" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+  <defs><marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#d38a00"/></marker></defs>
+
+  <!-- ==== RIGHT: ONE NEURON ZOOM ==== -->
+  <text x="620" y="65" font-size="14" font-weight="bold" fill="#7a4408">Zoom on one neuron (highlighted →)</text>
+
+  <!-- Inputs and weights to a big neuron -->
+  <g>
+    <circle cx="510" cy="120" r="10" fill="#e2eefc" stroke="#4a7fd4"/>
+    <text x="490" y="124" font-size="12" fill="#1f3a68" text-anchor="end">x₁</text>
+    <circle cx="510" cy="200" r="10" fill="#e2eefc" stroke="#4a7fd4"/>
+    <text x="490" y="204" font-size="12" fill="#1f3a68" text-anchor="end">x₂</text>
+    <circle cx="510" cy="280" r="10" fill="#e2eefc" stroke="#4a7fd4"/>
+    <text x="490" y="284" font-size="12" fill="#1f3a68" text-anchor="end">x₃</text>
+
+    <line x1="520" y1="120" x2="700" y2="200" stroke="#d38a00" stroke-width="1.5"/>
+    <line x1="520" y1="200" x2="700" y2="200" stroke="#d38a00" stroke-width="1.5"/>
+    <line x1="520" y1="280" x2="700" y2="200" stroke="#d38a00" stroke-width="1.5"/>
+
+    <text x="600" y="150" font-size="12" fill="#8a4b08">w₁ (weight)</text>
+    <text x="600" y="195" font-size="12" fill="#8a4b08">w₂</text>
+    <text x="600" y="250" font-size="12" fill="#8a4b08">w₃</text>
+
+    <circle cx="720" cy="200" r="26" fill="#fff3c9" stroke="#d38a00" stroke-width="2.5"/>
+    <text x="720" y="205" font-size="14" font-weight="bold" fill="#7a4408" text-anchor="middle">Σ, f</text>
+    <text x="720" y="245" font-size="11" fill="#7a4408" text-anchor="middle">+ bias b</text>
+
+    <line x1="746" y1="200" x2="820" y2="200" stroke="#5aa845" stroke-width="2" marker-end="url(#arr2)"/>
+    <defs><marker id="arr2" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#5aa845"/></marker></defs>
+    <text x="840" y="204" font-size="14" font-weight="bold" fill="#2d5c1e" text-anchor="middle">y</text>
+  </g>
+
+  <rect x="490" y="320" width="380" height="90" rx="10" fill="#fff8e6" stroke="#e08c2f" stroke-width="1.5"/>
+  <text x="510" y="345" font-size="13" font-weight="bold" fill="#7a4408">The math this neuron does:</text>
+  <text x="510" y="368" font-size="14" font-family="Menlo, monospace" fill="#2d3748">y = f( w₁·x₁ + w₂·x₂ + w₃·x₃ + b )</text>
+  <text x="510" y="395" font-size="11" fill="#7a4408">f() = "activation" (e.g. ReLU: keep positive, zero-out negative). Adds non-linearity.</text>
+
+  <!-- ==== BOTTOM: CODE ==== -->
+  <rect x="30" y="440" width="840" height="180" rx="10" fill="#1e2a3a" stroke="#0f172a"/>
+  <text x="50" y="466" font-size="13" font-weight="bold" fill="#93c5fd">The same network in PyTorch — just 4 lines:</text>
+
+  <g font-family="Menlo, monospace" font-size="13" fill="#e2e8f0">
+    <text x="50" y="492">import torch.nn as nn</text>
+    <text x="50" y="512">net = nn.Sequential(</text>
+    <text x="70" y="530">  nn.Linear(3, 4), nn.ReLU(),   <tspan fill="#94a3b8"># input→hidden1: 3×4 = 12 weights + 4 biases</tspan></text>
+    <text x="70" y="548">  nn.Linear(4, 4), nn.ReLU(),   <tspan fill="#94a3b8"># hidden1→hidden2: 4×4 = 16 weights + 4 biases</tspan></text>
+    <text x="70" y="566">  nn.Linear(4, 2),              <tspan fill="#94a3b8"># hidden2→output: 4×2 = 8 weights + 2 biases</tspan></text>
+    <text x="50" y="584">)</text>
+  </g>
+  <text x="50" y="608" font-size="12" fill="#facc15">Total parameters = 12+4 + 16+4 + 8+2 = 46. Scale this up ~170 million× → 8 billion, and you have Qwen3-8B.</text>
+</svg>

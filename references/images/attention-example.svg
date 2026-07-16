@@ -1,0 +1,85 @@
+<svg viewBox="0 0 960 520" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect width="960" height="520" fill="#ffffff"/>
+  <text x="480" y="32" font-size="18" font-weight="bold" fill="#1f2937" text-anchor="middle">Attention — how each token figures out what to pay attention to</text>
+  <text x="480" y="54" font-size="12" fill="#6b7280" text-anchor="middle">This is the "aha" trick that made LLMs possible.</text>
+
+  <!-- Sentence with tokens -->
+  <text x="30" y="105" font-size="13" font-weight="bold" fill="#1f2937">Sentence:</text>
+
+  <g font-family="Helvetica, Arial, sans-serif" font-size="14">
+    <rect x="105" y="90" width="45" height="35" rx="4" fill="#f8fafc" stroke="#94a3b8"/>
+    <text x="127" y="112" text-anchor="middle" fill="#1f2937">The</text>
+
+    <rect x="155" y="90" width="45" height="35" rx="4" fill="#e8f5e2" stroke="#5aa845" stroke-width="2"/>
+    <text x="177" y="112" text-anchor="middle" fill="#2d5c1e" font-weight="bold">cat</text>
+
+    <rect x="205" y="90" width="45" height="35" rx="4" fill="#f8fafc" stroke="#94a3b8"/>
+    <text x="227" y="112" text-anchor="middle" fill="#1f2937">sat</text>
+
+    <rect x="255" y="90" width="45" height="35" rx="4" fill="#f8fafc" stroke="#94a3b8"/>
+    <text x="277" y="112" text-anchor="middle" fill="#1f2937">on</text>
+
+    <rect x="305" y="90" width="45" height="35" rx="4" fill="#f8fafc" stroke="#94a3b8"/>
+    <text x="327" y="112" text-anchor="middle" fill="#1f2937">the</text>
+
+    <rect x="355" y="90" width="45" height="35" rx="4" fill="#f8fafc" stroke="#94a3b8"/>
+    <text x="377" y="112" text-anchor="middle" fill="#1f2937">mat</text>
+
+    <rect x="405" y="90" width="70" height="35" rx="4" fill="#f8fafc" stroke="#94a3b8"/>
+    <text x="440" y="112" text-anchor="middle" fill="#1f2937">because</text>
+
+    <rect x="480" y="90" width="35" height="35" rx="4" fill="#fecaca" stroke="#dc2626" stroke-width="2.5"/>
+    <text x="497" y="112" text-anchor="middle" fill="#7a1d1d" font-weight="bold">it</text>
+
+    <rect x="520" y="90" width="45" height="35" rx="4" fill="#f8fafc" stroke="#94a3b8"/>
+    <text x="542" y="112" text-anchor="middle" fill="#1f2937">was</text>
+
+    <rect x="570" y="90" width="55" height="35" rx="4" fill="#f8fafc" stroke="#94a3b8"/>
+    <text x="597" y="112" text-anchor="middle" fill="#1f2937">tired</text>
+
+    <rect x="630" y="90" width="20" height="35" rx="4" fill="#f8fafc" stroke="#94a3b8"/>
+    <text x="640" y="112" text-anchor="middle" fill="#1f2937">.</text>
+  </g>
+
+  <!-- Question -->
+  <text x="480" y="160" font-size="14" fill="#7a1d1d" text-anchor="middle" font-weight="bold">Question: what does "it" refer to?</text>
+
+  <!-- Attention weights -->
+  <text x="30" y="205" font-size="13" font-weight="bold" fill="#1f2937">The attention layer computes a weight from "it" to every other token:</text>
+
+  <!-- Attention arrows -->
+  <g fill="none">
+    <path d="M 497 195 Q 320 175, 177 130" stroke="#dc2626" stroke-width="4" opacity="0.85"/>
+    <path d="M 497 195 Q 400 200, 127 130" stroke="#dc2626" stroke-width="1" opacity="0.3"/>
+    <path d="M 497 195 Q 420 200, 227 130" stroke="#dc2626" stroke-width="1" opacity="0.3"/>
+    <path d="M 497 195 Q 430 200, 277 130" stroke="#dc2626" stroke-width="1" opacity="0.3"/>
+    <path d="M 497 195 Q 440 200, 327 130" stroke="#dc2626" stroke-width="1" opacity="0.3"/>
+    <path d="M 497 195 Q 450 200, 377 130" stroke="#dc2626" stroke-width="1.6" opacity="0.5"/>
+    <path d="M 497 195 Q 470 190, 440 130" stroke="#dc2626" stroke-width="1" opacity="0.3"/>
+  </g>
+
+  <!-- Weight labels -->
+  <text x="177" y="245" font-size="12" font-weight="bold" fill="#059669" text-anchor="middle">0.62 → "cat"</text>
+  <text x="177" y="258" font-size="10" fill="#6b7280" text-anchor="middle">strong match</text>
+
+  <text x="377" y="245" font-size="12" fill="#7a4408" text-anchor="middle">0.18 → "mat"</text>
+  <text x="377" y="258" font-size="10" fill="#6b7280" text-anchor="middle">also possible</text>
+
+  <text x="600" y="245" font-size="12" fill="#6b7280" text-anchor="middle">~0.02 each → all others</text>
+
+  <!-- How it works -->
+  <rect x="30" y="285" width="900" height="105" rx="10" fill="#fff8e6" stroke="#e08c2f" stroke-width="1"/>
+  <text x="50" y="308" font-size="13" font-weight="bold" fill="#7a4408">How the model computes those weights</text>
+  <text x="50" y="330" font-size="12" fill="#7a4408">Each token has been turned into a vector (from the embedding step). Attention gives every token three roles:</text>
+  <text x="60" y="350" font-size="11" fill="#7a4408">• A <tspan font-weight="bold">Query</tspan> — "what am I looking for?" (from the current token, e.g. "it")</text>
+  <text x="60" y="366" font-size="11" fill="#7a4408">• A <tspan font-weight="bold">Key</tspan> — "what do I offer?" (from every past token)</text>
+  <text x="60" y="382" font-size="11" fill="#7a4408">• A <tspan font-weight="bold">Value</tspan> — "here's my content, weighted by how much you needed me"</text>
+
+  <!-- What the layer produces -->
+  <rect x="30" y="400" width="900" height="110" rx="10" fill="#e8f5e2" stroke="#5aa845" stroke-width="1"/>
+  <text x="50" y="423" font-size="13" font-weight="bold" fill="#2d5c1e">What happens next</text>
+  <text x="50" y="445" font-size="12" fill="#2d5c1e">The vector for "it" is <tspan font-weight="bold">updated</tspan> to blend in mostly "cat" info (0.62), a bit of "mat" info (0.18), and small bits of everything else.</text>
+  <text x="50" y="463" font-size="12" fill="#2d5c1e">After this layer, "it" no longer means "some unknown pronoun" — it means "cat-ish, maybe mat-ish."</text>
+  <text x="50" y="481" font-size="12" fill="#2d5c1e">Every one of the model's layers (Qwen3-8B has 36) does this refinement pass, so meaning gets richer and richer as we go deeper.</text>
+  <text x="50" y="499" font-size="12" font-style="italic" fill="#2d5c1e">Also: real models have <tspan font-weight="bold">multi-head</tspan> attention — many independent Q/K/V lookups in parallel, so different "aspects" (grammar, meaning, position) are captured at once.</text>
+</svg>

@@ -1,0 +1,76 @@
+<svg viewBox="0 0 960 640" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect width="960" height="640" fill="#ffffff"/>
+  <text x="480" y="32" font-size="18" font-weight="bold" fill="#1f2937" text-anchor="middle">What the model processes vs. what you see on your screen</text>
+  <text x="480" y="54" font-size="12" fill="#6b7280" text-anchor="middle">Two different things. The chat UI strips out your prompt and shows you only the assistant's new tokens.</text>
+
+  <!-- Column headers -->
+  <rect x="30" y="80" width="60" height="34" rx="4" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="60" y="102" font-size="12" font-weight="bold" fill="#1f2937" text-anchor="middle">Step</text>
+
+  <rect x="95" y="80" width="510" height="34" rx="4" fill="#e2eefc" stroke="#4a7fd4"/>
+  <text x="350" y="102" font-size="12" font-weight="bold" fill="#1f3a68" text-anchor="middle">What the model actually processes each pass (input tokens)</text>
+
+  <rect x="610" y="80" width="320" height="34" rx="4" fill="#e8f5e2" stroke="#5aa845"/>
+  <text x="770" y="102" font-size="12" font-weight="bold" fill="#2d5c1e" text-anchor="middle">What you see on your screen</text>
+
+  <!-- Step 1 -->
+  <rect x="30" y="120" width="60" height="70" rx="4" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="60" y="160" font-size="14" font-weight="bold" fill="#1f2937" text-anchor="middle">1</text>
+
+  <rect x="95" y="120" width="510" height="70" rx="4" fill="#f0f7ff" stroke="#4a7fd4"/>
+  <text x="105" y="142" font-size="10" fill="#1f3a68">Your prompt (7 tokens):</text>
+  <text x="105" y="162" font-size="12" font-family="Menlo, monospace" fill="#1f3a68">[What, is, the, capital, of, France, ?]</text>
+  <text x="105" y="180" font-size="10" fill="#059669">→ model runs one forward pass → outputs token: <tspan font-weight="bold">"The"</tspan></text>
+
+  <rect x="610" y="120" width="320" height="70" rx="4" fill="#f0fdf4" stroke="#5aa845"/>
+  <text x="770" y="160" font-size="14" font-family="Menlo, monospace" fill="#2d5c1e" text-anchor="middle">The</text>
+
+  <!-- Step 2 -->
+  <rect x="30" y="196" width="60" height="70" rx="4" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="60" y="236" font-size="14" font-weight="bold" fill="#1f2937" text-anchor="middle">2</text>
+
+  <rect x="95" y="196" width="510" height="70" rx="4" fill="#f0f7ff" stroke="#4a7fd4"/>
+  <text x="105" y="218" font-size="10" fill="#1f3a68">Prompt + all output so far (8 tokens):</text>
+  <text x="105" y="238" font-size="12" font-family="Menlo, monospace" fill="#1f3a68">[What, is, the, capital, of, France, ?, <tspan fill="#059669" font-weight="bold">The</tspan>]</text>
+  <text x="105" y="256" font-size="10" fill="#059669">→ one more forward pass → outputs: <tspan font-weight="bold">"capital"</tspan></text>
+
+  <rect x="610" y="196" width="320" height="70" rx="4" fill="#f0fdf4" stroke="#5aa845"/>
+  <text x="770" y="236" font-size="14" font-family="Menlo, monospace" fill="#2d5c1e" text-anchor="middle">The capital</text>
+
+  <!-- Step 3 -->
+  <rect x="30" y="272" width="60" height="70" rx="4" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="60" y="312" font-size="14" font-weight="bold" fill="#1f2937" text-anchor="middle">3</text>
+
+  <rect x="95" y="272" width="510" height="70" rx="4" fill="#f0f7ff" stroke="#4a7fd4"/>
+  <text x="105" y="294" font-size="10" fill="#1f3a68">Prompt + all output so far (9 tokens):</text>
+  <text x="105" y="314" font-size="12" font-family="Menlo, monospace" fill="#1f3a68">[What, is, the, capital, of, France, ?, <tspan fill="#059669" font-weight="bold">The, capital</tspan>]</text>
+  <text x="105" y="332" font-size="10" fill="#059669">→ one more forward pass → outputs: <tspan font-weight="bold">"of"</tspan></text>
+
+  <rect x="610" y="272" width="320" height="70" rx="4" fill="#f0fdf4" stroke="#5aa845"/>
+  <text x="770" y="312" font-size="14" font-family="Menlo, monospace" fill="#2d5c1e" text-anchor="middle">The capital of</text>
+
+  <!-- ... -->
+  <text x="480" y="365" font-size="14" fill="#6b7280" text-anchor="middle">… (this repeats, one forward pass per token, until the model emits a special "stop" token) …</text>
+
+  <!-- Step N -->
+  <rect x="30" y="380" width="60" height="70" rx="4" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="60" y="420" font-size="14" font-weight="bold" fill="#1f2937" text-anchor="middle">7</text>
+
+  <rect x="95" y="380" width="510" height="70" rx="4" fill="#f0f7ff" stroke="#4a7fd4"/>
+  <text x="105" y="402" font-size="10" fill="#1f3a68">Prompt + all output so far (13 tokens):</text>
+  <text x="105" y="422" font-size="11" font-family="Menlo, monospace" fill="#1f3a68">[…?, <tspan fill="#059669" font-weight="bold">The, capital, of, France, is, Paris</tspan>]</text>
+  <text x="105" y="440" font-size="10" fill="#059669">→ outputs: <tspan font-weight="bold">"."</tspan> + STOP token → generation ends</text>
+
+  <rect x="610" y="380" width="320" height="70" rx="4" fill="#f0fdf4" stroke="#5aa845"/>
+  <text x="770" y="420" font-size="13" font-family="Menlo, monospace" fill="#2d5c1e" text-anchor="middle">The capital of</text>
+  <text x="770" y="440" font-size="13" font-family="Menlo, monospace" fill="#2d5c1e" text-anchor="middle">France is Paris.</text>
+
+  <!-- Explanation box -->
+  <rect x="30" y="470" width="900" height="155" rx="10" fill="#fff8e6" stroke="#e08c2f" stroke-width="1.5"/>
+  <text x="50" y="494" font-size="14" font-weight="bold" fill="#7a4408">Two different things — don't conflate them:</text>
+  <text x="50" y="520" font-size="12" fill="#7a4408"><tspan font-weight="bold">The model's input each pass</tspan> keeps growing. To predict the next token, attention needs to see</text>
+  <text x="50" y="537" font-size="12" fill="#7a4408">every past token (your prompt AND everything the model has generated so far). That's why the token list grows.</text>
+  <text x="50" y="565" font-size="12" fill="#7a4408"><tspan font-weight="bold">Your screen shows only the assistant's new tokens</tspan> — the chat UI hides your prompt from the streaming reply</text>
+  <text x="50" y="582" font-size="12" fill="#7a4408">and just accumulates the green tokens as they come out.</text>
+  <text x="50" y="610" font-size="12" font-style="italic" fill="#7a4408">So "the answer" = the accumulated output tokens. "The model's input" = your prompt + those same output tokens fed back.</text>
+</svg>

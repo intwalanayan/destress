@@ -1,0 +1,53 @@
+<svg viewBox="0 0 940 560" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect width="940" height="560" fill="#ffffff"/>
+  <text x="470" y="32" font-size="18" font-weight="bold" fill="#1f2937" text-anchor="middle">Overfitting — memorising vs. actually learning</text>
+  <text x="470" y="54" font-size="12" fill="#6b7280" text-anchor="middle">Watch two loss curves. When they diverge, the model has stopped learning and started memorising.</text>
+
+  <!-- CHART AREA -->
+  <!-- Axes -->
+  <line x1="90" y1="400" x2="750" y2="400" stroke="#1f2937" stroke-width="1.5"/>
+  <line x1="90" y1="90" x2="90" y2="400" stroke="#1f2937" stroke-width="1.5"/>
+
+  <text x="420" y="425" font-size="12" fill="#1f2937" text-anchor="middle">Training iterations (time) →</text>
+  <text x="60" y="245" font-size="12" fill="#1f2937" text-anchor="middle" transform="rotate(-90 60 245)">Loss (lower = better) →</text>
+
+  <!-- Y-axis ticks -->
+  <text x="82" y="105" font-size="10" fill="#6b7280" text-anchor="end">high</text>
+  <text x="82" y="400" font-size="10" fill="#6b7280" text-anchor="end">0</text>
+
+  <!-- Training loss curve (goes down monotonically) -->
+  <path d="M 100 130 Q 200 180, 280 220 T 480 300 T 650 355 L 730 380" fill="none" stroke="#059669" stroke-width="3"/>
+
+  <!-- Validation loss curve (goes down, then up) -->
+  <path d="M 100 145 Q 200 195, 280 230 T 440 260 Q 500 258, 560 275 Q 620 300, 680 330 L 730 355" fill="none" stroke="#dc2626" stroke-width="3"/>
+
+  <!-- Sweet spot marker -->
+  <circle cx="450" cy="262" r="8" fill="#f59e0b" stroke="#7a4408" stroke-width="2"/>
+  <line x1="450" y1="270" x2="450" y2="400" stroke="#f59e0b" stroke-width="1" stroke-dasharray="4,3"/>
+  <text x="450" y="440" font-size="12" font-weight="bold" fill="#7a4408" text-anchor="middle">← STOP HERE →</text>
+  <text x="450" y="456" font-size="10" fill="#7a4408" text-anchor="middle">(the "sweet spot")</text>
+
+  <!-- Regions -->
+  <rect x="90" y="80" width="360" height="10" fill="#059669" opacity="0.15"/>
+  <text x="270" y="75" font-size="11" fill="#059669" text-anchor="middle" font-weight="bold">learning (both losses drop)</text>
+
+  <rect x="450" y="80" width="300" height="10" fill="#dc2626" opacity="0.15"/>
+  <text x="600" y="75" font-size="11" fill="#dc2626" text-anchor="middle" font-weight="bold">overfitting (train drops, val rises)</text>
+
+  <!-- Legend -->
+  <rect x="500" y="105" width="240" height="80" rx="8" fill="#f8fafc" stroke="#94a3b8"/>
+  <line x1="515" y1="128" x2="545" y2="128" stroke="#059669" stroke-width="3"/>
+  <text x="555" y="132" font-size="12" fill="#1f2937"><tspan font-weight="bold">Training loss</tspan> — on data model saw</text>
+
+  <line x1="515" y1="155" x2="545" y2="155" stroke="#dc2626" stroke-width="3"/>
+  <text x="555" y="159" font-size="12" fill="#1f2937"><tspan font-weight="bold">Validation loss</tspan> — on unseen data</text>
+
+  <circle cx="530" cy="176" r="5" fill="#f59e0b" stroke="#7a4408"/>
+  <text x="555" y="180" font-size="11" fill="#1f2937">best model — save it here</text>
+
+  <!-- ANALOGY BOX -->
+  <rect x="30" y="470" width="880" height="80" rx="10" fill="#fff8e6" stroke="#e08c2f" stroke-width="1.5"/>
+  <text x="50" y="493" font-size="14" font-weight="bold" fill="#7a4408">The exam analogy</text>
+  <text x="50" y="515" font-size="12" fill="#7a4408"><tspan font-weight="bold">Learning:</tspan> understand the subject — you handle old exams AND new ones well.</text>
+  <text x="50" y="533" font-size="12" fill="#7a4408"><tspan font-weight="bold">Overfitting:</tspan> memorise the answer key — you ace practice tests but flunk anything you haven't seen. That's the red line rising.</text>
+</svg>

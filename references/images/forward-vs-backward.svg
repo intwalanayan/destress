@@ -1,0 +1,100 @@
+<svg viewBox="0 0 960 580" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect width="960" height="580" fill="#ffffff"/>
+  <text x="480" y="32" font-size="18" font-weight="bold" fill="#1f2937" text-anchor="middle">Forward pass vs. backward pass — data flows one way, blame flows the other</text>
+
+  <defs>
+    <marker id="arf" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L9,3 L0,6 Z" fill="#4a7fd4"/>
+    </marker>
+    <marker id="arb" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L9,3 L0,6 Z" fill="#dc2626"/>
+    </marker>
+  </defs>
+
+  <!-- ROW 1: FORWARD -->
+  <text x="480" y="72" font-size="15" font-weight="bold" fill="#1f3a68" text-anchor="middle">Forward pass — data flows LEFT → RIGHT (Inference does this. Training does this first.)</text>
+
+  <rect x="60" y="90" width="100" height="60" rx="8" fill="#e2eefc" stroke="#4a7fd4" stroke-width="1.5"/>
+  <text x="110" y="118" font-size="11" fill="#1f3a68" text-anchor="middle">Input</text>
+  <text x="110" y="135" font-size="10" fill="#1f3a68" text-anchor="middle">hours=7</text>
+
+  <line x1="163" y1="120" x2="217" y2="120" stroke="#4a7fd4" stroke-width="2" marker-end="url(#arf)"/>
+
+  <rect x="220" y="90" width="120" height="60" rx="8" fill="#e2eefc" stroke="#4a7fd4" stroke-width="1.5"/>
+  <text x="280" y="115" font-size="11" fill="#1f3a68" text-anchor="middle">Layer 1</text>
+  <text x="280" y="130" font-size="10" fill="#1f3a68" text-anchor="middle">weight w₁</text>
+  <text x="280" y="143" font-size="9" fill="#6b7280" text-anchor="middle">multiply, add bias</text>
+
+  <line x1="343" y1="120" x2="397" y2="120" stroke="#4a7fd4" stroke-width="2" marker-end="url(#arf)"/>
+
+  <rect x="400" y="90" width="120" height="60" rx="8" fill="#e2eefc" stroke="#4a7fd4" stroke-width="1.5"/>
+  <text x="460" y="115" font-size="11" fill="#1f3a68" text-anchor="middle">Layer 2</text>
+  <text x="460" y="130" font-size="10" fill="#1f3a68" text-anchor="middle">weight w₂</text>
+  <text x="460" y="143" font-size="9" fill="#6b7280" text-anchor="middle">multiply, add bias</text>
+
+  <line x1="523" y1="120" x2="577" y2="120" stroke="#4a7fd4" stroke-width="2" marker-end="url(#arf)"/>
+
+  <rect x="580" y="90" width="120" height="60" rx="8" fill="#e2eefc" stroke="#4a7fd4" stroke-width="1.5"/>
+  <text x="640" y="115" font-size="11" fill="#1f3a68" text-anchor="middle">Layer 3</text>
+  <text x="640" y="130" font-size="10" fill="#1f3a68" text-anchor="middle">weight w₃</text>
+  <text x="640" y="143" font-size="9" fill="#6b7280" text-anchor="middle">multiply, add bias</text>
+
+  <line x1="703" y1="120" x2="757" y2="120" stroke="#4a7fd4" stroke-width="2" marker-end="url(#arf)"/>
+
+  <rect x="760" y="90" width="140" height="60" rx="8" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+  <text x="830" y="115" font-size="11" fill="#78350f" text-anchor="middle">Prediction</text>
+  <text x="830" y="132" font-size="10" fill="#78350f" text-anchor="middle">score=45</text>
+  <text x="830" y="146" font-size="9" fill="#6b7280" text-anchor="middle">(actual: 65)</text>
+
+  <text x="480" y="175" font-size="11" font-style="italic" fill="#6b7280" text-anchor="middle">Numbers flow forward, get multiplied by weights, produce a prediction.</text>
+
+  <!-- MIDDLE: LOSS -->
+  <rect x="360" y="200" width="240" height="60" rx="10" fill="#fecaca" stroke="#dc2626" stroke-width="2"/>
+  <text x="480" y="223" font-size="14" font-weight="bold" fill="#7a1d1d" text-anchor="middle">LOSS = (65 − 45)² = 400</text>
+  <text x="480" y="245" font-size="11" fill="#7a1d1d" text-anchor="middle">Distance between prediction and truth</text>
+
+  <!-- ROW 2: BACKWARD -->
+  <text x="480" y="295" font-size="15" font-weight="bold" fill="#7a1d1d" text-anchor="middle">Backward pass — gradients flow RIGHT → LEFT (only happens during training)</text>
+
+  <rect x="60" y="315" width="100" height="60" rx="8" fill="#fecaca" stroke="#dc2626" stroke-width="1.5" opacity="0.9"/>
+  <text x="110" y="343" font-size="11" fill="#7a1d1d" text-anchor="middle">(Input</text>
+  <text x="110" y="360" font-size="10" fill="#7a1d1d" text-anchor="middle">unchanged)</text>
+
+  <line x1="217" y1="345" x2="163" y2="345" stroke="#dc2626" stroke-width="2" marker-end="url(#arb)"/>
+
+  <rect x="220" y="315" width="120" height="60" rx="8" fill="#fecaca" stroke="#dc2626" stroke-width="1.5" opacity="0.9"/>
+  <text x="280" y="340" font-size="11" fill="#7a1d1d" text-anchor="middle">Layer 1</text>
+  <text x="280" y="357" font-size="10" font-weight="bold" fill="#7a1d1d" text-anchor="middle">∂loss/∂w₁ = 0.7</text>
+  <text x="280" y="370" font-size="9" fill="#6b7280" text-anchor="middle">"nudge me down"</text>
+
+  <line x1="397" y1="345" x2="343" y2="345" stroke="#dc2626" stroke-width="2" marker-end="url(#arb)"/>
+
+  <rect x="400" y="315" width="120" height="60" rx="8" fill="#fecaca" stroke="#dc2626" stroke-width="1.5" opacity="0.9"/>
+  <text x="460" y="340" font-size="11" fill="#7a1d1d" text-anchor="middle">Layer 2</text>
+  <text x="460" y="357" font-size="10" font-weight="bold" fill="#7a1d1d" text-anchor="middle">∂loss/∂w₂ = -1.2</text>
+  <text x="460" y="370" font-size="9" fill="#6b7280" text-anchor="middle">"nudge me up"</text>
+
+  <line x1="577" y1="345" x2="523" y2="345" stroke="#dc2626" stroke-width="2" marker-end="url(#arb)"/>
+
+  <rect x="580" y="315" width="120" height="60" rx="8" fill="#fecaca" stroke="#dc2626" stroke-width="1.5" opacity="0.9"/>
+  <text x="640" y="340" font-size="11" fill="#7a1d1d" text-anchor="middle">Layer 3</text>
+  <text x="640" y="357" font-size="10" font-weight="bold" fill="#7a1d1d" text-anchor="middle">∂loss/∂w₃ = 2.4</text>
+  <text x="640" y="370" font-size="9" fill="#6b7280" text-anchor="middle">"nudge me down"</text>
+
+  <line x1="757" y1="345" x2="703" y2="345" stroke="#dc2626" stroke-width="2" marker-end="url(#arb)"/>
+
+  <rect x="760" y="315" width="140" height="60" rx="8" fill="#fecaca" stroke="#dc2626" stroke-width="2"/>
+  <text x="830" y="343" font-size="11" font-weight="bold" fill="#7a1d1d" text-anchor="middle">Start here:</text>
+  <text x="830" y="360" font-size="10" fill="#7a1d1d" text-anchor="middle">loss = 400 (too big)</text>
+
+  <text x="480" y="400" font-size="11" font-style="italic" fill="#6b7280" text-anchor="middle">Blame flows backward. Each layer's weights get a "nudge instruction" (a gradient).</text>
+
+  <!-- ANALOGY BOX -->
+  <rect x="30" y="425" width="900" height="140" rx="10" fill="#fff8e6" stroke="#e08c2f" stroke-width="1.5"/>
+  <text x="50" y="448" font-size="14" font-weight="bold" fill="#7a4408">Analogy — a factory production line</text>
+  <text x="50" y="470" font-size="12" fill="#7a4408"><tspan font-weight="bold">Forward pass:</tspan> raw materials → station 1 → station 2 → station 3 → final product. Each station modifies what it received.</text>
+  <text x="50" y="490" font-size="12" fill="#7a4408"><tspan font-weight="bold">Loss:</tspan> quality-check tells you "the final product is 20 grams heavier than it should be."</text>
+  <text x="50" y="510" font-size="12" fill="#7a4408"><tspan font-weight="bold">Backward pass:</tspan> walk the line backward. At each station, ask "how did YOUR contribution affect the final weight?"</text>
+  <text x="50" y="527" font-size="12" fill="#7a4408">Station 3 says "I add 5g on average." Station 2 says "I add 8g." Station 1 says "I add 7g." Each learns its share.</text>
+  <text x="50" y="547" font-size="12" fill="#7a4408"><tspan font-weight="bold">Optimizer step:</tspan> each station adjusts its knobs slightly. Next batch, the final product is closer to target.</text>
+</svg>

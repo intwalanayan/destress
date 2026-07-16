@@ -1,0 +1,54 @@
+<svg viewBox="0 0 860 560" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect width="860" height="560" fill="#ffffff"/>
+  <text x="430" y="38" font-size="20" font-weight="bold" fill="#1f2937" text-anchor="middle">The local AI stack on your Mac (M3 Pro, 18 GB)</text>
+
+  <!-- Layer 4: You -->
+  <rect x="40" y="60" width="780" height="90" rx="12" fill="#f3e8fd" stroke="#9b59d0" stroke-width="2"/>
+  <text x="60" y="90" font-size="16" font-weight="bold" fill="#5b2d85">4. YOUR INTERFACE — how you talk to models</text>
+  <rect x="60" y="102" width="220" height="36" rx="8" fill="#ffffff" stroke="#9b59d0"/>
+  <text x="170" y="125" font-size="13" fill="#5b2d85" text-anchor="middle">Chat window (LM Studio)</text>
+  <rect x="300" y="102" width="220" height="36" rx="8" fill="#ffffff" stroke="#9b59d0"/>
+  <text x="410" y="125" font-size="13" fill="#5b2d85" text-anchor="middle">Terminal (ollama run …)</text>
+  <rect x="540" y="102" width="260" height="36" rx="8" fill="#ffffff" stroke="#9b59d0"/>
+  <text x="670" y="125" font-size="13" fill="#5b2d85" text-anchor="middle">Python / HTTP API (your own code)</text>
+
+  <!-- Layer 3: Tools -->
+  <rect x="40" y="170" width="780" height="90" rx="12" fill="#e2eefc" stroke="#4a7fd4" stroke-width="2"/>
+  <text x="60" y="200" font-size="16" font-weight="bold" fill="#1f3a68">3. MODEL RUNNERS — download, manage &amp; serve models</text>
+  <rect x="60" y="212" width="170" height="36" rx="8" fill="#ffffff" stroke="#4a7fd4"/>
+  <text x="145" y="235" font-size="13" fill="#1f3a68" text-anchor="middle">Ollama (CLI + server)</text>
+  <rect x="250" y="212" width="170" height="36" rx="8" fill="#ffffff" stroke="#4a7fd4"/>
+  <text x="335" y="235" font-size="13" fill="#1f3a68" text-anchor="middle">LM Studio (GUI)</text>
+  <rect x="440" y="212" width="170" height="36" rx="8" fill="#ffffff" stroke="#4a7fd4"/>
+  <text x="525" y="235" font-size="13" fill="#1f3a68" text-anchor="middle">mlx-lm (Python)</text>
+  <rect x="630" y="212" width="170" height="36" rx="8" fill="#ffffff" stroke="#4a7fd4"/>
+  <text x="715" y="235" font-size="13" fill="#1f3a68" text-anchor="middle">Hugging Face (model store)</text>
+
+  <!-- Layer 2: Frameworks -->
+  <rect x="40" y="280" width="780" height="90" rx="12" fill="#e8f5e2" stroke="#5aa845" stroke-width="2"/>
+  <text x="60" y="310" font-size="16" font-weight="bold" fill="#2d5c1e">2. ML FRAMEWORKS — the math engines (matrix multiplication at scale)</text>
+  <rect x="60" y="322" width="230" height="36" rx="8" fill="#ffffff" stroke="#5aa845"/>
+  <text x="175" y="345" font-size="13" fill="#2d5c1e" text-anchor="middle">MLX (Apple-native, fastest here)</text>
+  <rect x="310" y="322" width="240" height="36" rx="8" fill="#ffffff" stroke="#5aa845"/>
+  <text x="430" y="345" font-size="13" fill="#2d5c1e" text-anchor="middle">PyTorch + MPS (industry standard)</text>
+  <rect x="570" y="322" width="230" height="36" rx="8" fill="#ffffff" stroke="#5aa845"/>
+  <text x="685" y="345" font-size="13" fill="#2d5c1e" text-anchor="middle">llama.cpp / GGUF (portable C++)</text>
+
+  <!-- Layer 1: Hardware -->
+  <rect x="40" y="390" width="780" height="110" rx="12" fill="#fdeede" stroke="#e08c2f" stroke-width="2"/>
+  <text x="60" y="420" font-size="16" font-weight="bold" fill="#7a4408">1. HARDWARE — Apple M3 Pro</text>
+  <rect x="60" y="432" width="150" height="52" rx="8" fill="#ffffff" stroke="#e08c2f"/>
+  <text x="135" y="454" font-size="13" font-weight="bold" fill="#7a4408" text-anchor="middle">CPU cores</text>
+  <text x="135" y="472" font-size="11" fill="#7a4408" text-anchor="middle">general logic</text>
+  <rect x="230" y="432" width="150" height="52" rx="8" fill="#ffffff" stroke="#e08c2f"/>
+  <text x="305" y="454" font-size="13" font-weight="bold" fill="#7a4408" text-anchor="middle">GPU cores</text>
+  <text x="305" y="472" font-size="11" fill="#7a4408" text-anchor="middle">parallel math (the ML workhorse)</text>
+  <rect x="400" y="432" width="150" height="52" rx="8" fill="#ffffff" stroke="#e08c2f"/>
+  <text x="475" y="454" font-size="13" font-weight="bold" fill="#7a4408" text-anchor="middle">Neural Engine</text>
+  <text x="475" y="472" font-size="11" fill="#7a4408" text-anchor="middle">Apple's ML accelerator</text>
+  <rect x="570" y="432" width="230" height="52" rx="8" fill="#fff8e6" stroke="#e08c2f" stroke-width="2"/>
+  <text x="685" y="454" font-size="13" font-weight="bold" fill="#7a4408" text-anchor="middle">18 GB UNIFIED MEMORY</text>
+  <text x="685" y="472" font-size="11" fill="#7a4408" text-anchor="middle">shared by CPU+GPU — your model-size budget</text>
+
+  <text x="430" y="530" font-size="13" fill="#6b7280" text-anchor="middle" font-style="italic">Each layer builds on the one below. You'll mostly live in layers 3–4; layer 2 matters when we train.</text>
+</svg>

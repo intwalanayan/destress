@@ -1,0 +1,98 @@
+<svg viewBox="0 0 960 500" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect width="960" height="500" fill="#ffffff"/>
+  <text x="480" y="32" font-size="18" font-weight="bold" fill="#1f2937" text-anchor="middle">Tokenization worked example</text>
+  <text x="480" y="54" font-size="12" fill="#6b7280" text-anchor="middle">Text → chunks the tokenizer knows about → integer IDs</text>
+
+  <!-- Original text -->
+  <rect x="30" y="80" width="900" height="50" rx="8" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+  <text x="480" y="103" font-size="14" fill="#78350f" text-anchor="middle">You type:</text>
+  <text x="480" y="122" font-size="16" font-family="Menlo, monospace" fill="#78350f" text-anchor="middle">"I love running LLMs locally on my MacBook."</text>
+
+  <text x="480" y="155" font-size="18" fill="#94a3b8" text-anchor="middle">↓  the tokenizer splits it into 12 tokens  ↓</text>
+
+  <!-- Token boxes -->
+  <g>
+    <!-- I -->
+    <rect x="30" y="180" width="35" height="45" rx="4" fill="#e2eefc" stroke="#4a7fd4"/>
+    <text x="47" y="200" font-size="13" font-family="Menlo, monospace" fill="#1f3a68" text-anchor="middle">I</text>
+    <text x="47" y="217" font-size="9" fill="#6b7280" text-anchor="middle">40</text>
+
+    <!-- ' love' -->
+    <rect x="72" y="180" width="70" height="45" rx="4" fill="#e8f5e2" stroke="#5aa845"/>
+    <text x="107" y="200" font-size="13" font-family="Menlo, monospace" fill="#2d5c1e" text-anchor="middle">·love</text>
+    <text x="107" y="217" font-size="9" fill="#6b7280" text-anchor="middle">2653</text>
+
+    <!-- ' running' -->
+    <rect x="150" y="180" width="90" height="45" rx="4" fill="#e8f5e2" stroke="#5aa845"/>
+    <text x="195" y="200" font-size="13" font-family="Menlo, monospace" fill="#2d5c1e" text-anchor="middle">·running</text>
+    <text x="195" y="217" font-size="9" fill="#6b7280" text-anchor="middle">4269</text>
+
+    <!-- ' L' -->
+    <rect x="248" y="180" width="40" height="45" rx="4" fill="#f3e8fd" stroke="#9b59d0"/>
+    <text x="268" y="200" font-size="13" font-family="Menlo, monospace" fill="#5b2d85" text-anchor="middle">·L</text>
+    <text x="268" y="217" font-size="9" fill="#6b7280" text-anchor="middle">445</text>
+
+    <!-- LM -->
+    <rect x="296" y="180" width="45" height="45" rx="4" fill="#f3e8fd" stroke="#9b59d0"/>
+    <text x="318" y="200" font-size="13" font-family="Menlo, monospace" fill="#5b2d85" text-anchor="middle">LM</text>
+    <text x="318" y="217" font-size="9" fill="#6b7280" text-anchor="middle">27125</text>
+
+    <!-- s -->
+    <rect x="349" y="180" width="30" height="45" rx="4" fill="#f3e8fd" stroke="#9b59d0"/>
+    <text x="364" y="200" font-size="13" font-family="Menlo, monospace" fill="#5b2d85" text-anchor="middle">s</text>
+    <text x="364" y="217" font-size="9" fill="#6b7280" text-anchor="middle">82</text>
+
+    <!-- ' locally' -->
+    <rect x="387" y="180" width="90" height="45" rx="4" fill="#e8f5e2" stroke="#5aa845"/>
+    <text x="432" y="200" font-size="13" font-family="Menlo, monospace" fill="#2d5c1e" text-anchor="middle">·locally</text>
+    <text x="432" y="217" font-size="9" fill="#6b7280" text-anchor="middle">15726</text>
+
+    <!-- ' on' -->
+    <rect x="485" y="180" width="45" height="45" rx="4" fill="#e8f5e2" stroke="#5aa845"/>
+    <text x="507" y="200" font-size="13" font-family="Menlo, monospace" fill="#2d5c1e" text-anchor="middle">·on</text>
+    <text x="507" y="217" font-size="9" fill="#6b7280" text-anchor="middle">389</text>
+
+    <!-- ' my' -->
+    <rect x="538" y="180" width="45" height="45" rx="4" fill="#e8f5e2" stroke="#5aa845"/>
+    <text x="560" y="200" font-size="13" font-family="Menlo, monospace" fill="#2d5c1e" text-anchor="middle">·my</text>
+    <text x="560" y="217" font-size="9" fill="#6b7280" text-anchor="middle">856</text>
+
+    <!-- ' Mac' -->
+    <rect x="591" y="180" width="55" height="45" rx="4" fill="#f3e8fd" stroke="#9b59d0"/>
+    <text x="618" y="200" font-size="13" font-family="Menlo, monospace" fill="#5b2d85" text-anchor="middle">·Mac</text>
+    <text x="618" y="217" font-size="9" fill="#6b7280" text-anchor="middle">7912</text>
+
+    <!-- Book -->
+    <rect x="654" y="180" width="55" height="45" rx="4" fill="#f3e8fd" stroke="#9b59d0"/>
+    <text x="681" y="200" font-size="13" font-family="Menlo, monospace" fill="#5b2d85" text-anchor="middle">Book</text>
+    <text x="681" y="217" font-size="9" fill="#6b7280" text-anchor="middle">4802</text>
+
+    <!-- . -->
+    <rect x="717" y="180" width="30" height="45" rx="4" fill="#fdeede" stroke="#e08c2f"/>
+    <text x="732" y="200" font-size="13" font-family="Menlo, monospace" fill="#7a4408" text-anchor="middle">.</text>
+    <text x="732" y="217" font-size="9" fill="#6b7280" text-anchor="middle">13</text>
+  </g>
+
+  <!-- Legend -->
+  <text x="30" y="260" font-size="12" font-weight="bold" fill="#1f2937">Notice:</text>
+
+  <rect x="30" y="270" width="14" height="14" fill="#e2eefc" stroke="#4a7fd4"/>
+  <text x="52" y="282" font-size="11" fill="#1f2937">Common short words are one token each ("I")</text>
+
+  <rect x="30" y="292" width="14" height="14" fill="#e8f5e2" stroke="#5aa845"/>
+  <text x="52" y="304" font-size="11" fill="#1f2937">Words with a leading space have "·" — spaces are part of the token</text>
+
+  <rect x="30" y="314" width="14" height="14" fill="#f3e8fd" stroke="#9b59d0"/>
+  <text x="52" y="326" font-size="11" fill="#1f2937">Rare or made-up words are split into sub-pieces ("LLMs" → "·L" + "LM" + "s"; "MacBook" → "·Mac" + "Book")</text>
+
+  <rect x="30" y="336" width="14" height="14" fill="#fdeede" stroke="#e08c2f"/>
+  <text x="52" y="348" font-size="11" fill="#1f2937">Punctuation is its own token</text>
+
+  <!-- BPE explainer -->
+  <rect x="30" y="370" width="900" height="115" rx="10" fill="#f0f7ff" stroke="#4a7fd4" stroke-width="1"/>
+  <text x="50" y="393" font-size="13" font-weight="bold" fill="#1f3a68">Why chunks instead of words? — Byte-Pair Encoding (BPE)</text>
+  <text x="50" y="415" font-size="11" fill="#1f3a68">The tokenizer was built by scanning billions of pages of text and finding the ~150,000 most common character-groups.</text>
+  <text x="50" y="431" font-size="11" fill="#1f3a68">Frequent whole words get their own token ("locally"); rare words are stitched together from smaller pieces ("MacBook").</text>
+  <text x="50" y="447" font-size="11" fill="#1f3a68">Result: the tokenizer can represent <tspan font-weight="bold">any</tspan> string — including words it has never seen, code, emoji, other languages — by falling back to sub-pieces.</text>
+  <text x="50" y="466" font-size="11" fill="#1f3a68">Rule of thumb: <tspan font-weight="bold">1 token ≈ ¾ of an English word</tspan>. "The quick brown fox" ≈ 4 tokens. A dense page of text ≈ ~500 tokens.</text>
+</svg>

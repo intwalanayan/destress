@@ -1,0 +1,104 @@
+<svg viewBox="0 0 940 560" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect width="940" height="560" fill="#ffffff"/>
+  <text x="470" y="34" font-size="18" font-weight="bold" fill="#1f2937" text-anchor="middle">Different inputs → same idea: turn everything into numbers, then pick a matching architecture</text>
+
+  <!-- column headers -->
+  <text x="120" y="72" font-size="13" font-weight="bold" fill="#6b7280" text-anchor="middle">1. Raw input</text>
+  <text x="360" y="72" font-size="13" font-weight="bold" fill="#6b7280" text-anchor="middle">2. Encoded as a tensor (numbers)</text>
+  <text x="620" y="72" font-size="13" font-weight="bold" fill="#6b7280" text-anchor="middle">3. Tensor shape</text>
+  <text x="830" y="72" font-size="13" font-weight="bold" fill="#6b7280" text-anchor="middle">4. Architecture that reads it</text>
+
+  <line x1="20" y1="82" x2="920" y2="82" stroke="#e5e7eb" stroke-width="1"/>
+
+  <!-- Arrow marker -->
+  <defs>
+    <marker id="ar" markerWidth="9" markerHeight="9" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+
+  <!-- === ROW 1: TEXT === -->
+  <text x="120" y="140" font-size="14" fill="#1f3a68" text-anchor="middle" font-weight="bold">Text</text>
+  <rect x="40" y="150" width="160" height="46" rx="8" fill="#e2eefc" stroke="#4a7fd4" stroke-width="1.5"/>
+  <text x="120" y="178" font-size="13" font-family="Menlo, monospace" fill="#1f3a68" text-anchor="middle">"hello world"</text>
+
+  <line x1="205" y1="173" x2="245" y2="173" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ar)"/>
+
+  <rect x="250" y="130" width="220" height="86" rx="8" fill="#f0f7ff" stroke="#4a7fd4" stroke-width="1"/>
+  <text x="360" y="152" font-size="12" fill="#1f3a68" text-anchor="middle">tokenize → integer IDs</text>
+  <text x="360" y="170" font-size="12" font-family="Menlo, monospace" fill="#1f3a68" text-anchor="middle">[15496, 995]</text>
+  <text x="360" y="188" font-size="12" fill="#1f3a68" text-anchor="middle">→ embed each ID as a vector</text>
+  <text x="360" y="206" font-size="11" font-family="Menlo, monospace" fill="#4a7fd4" text-anchor="middle">[[0.1,-0.4,…], [0.7,0.2,…]]</text>
+
+  <line x1="475" y1="173" x2="525" y2="173" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ar)"/>
+
+  <rect x="530" y="150" width="180" height="46" rx="8" fill="#fff8e6" stroke="#e08c2f"/>
+  <text x="620" y="172" font-size="12" font-family="Menlo, monospace" fill="#7a4408" text-anchor="middle">[seq_len, embed_dim]</text>
+  <text x="620" y="188" font-size="11" fill="#7a4408" text-anchor="middle">e.g. [2, 4096]</text>
+
+  <line x1="715" y1="173" x2="755" y2="173" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ar)"/>
+
+  <rect x="760" y="145" width="140" height="56" rx="8" fill="#e8f5e2" stroke="#5aa845" stroke-width="2"/>
+  <text x="830" y="167" font-size="14" font-weight="bold" fill="#2d5c1e" text-anchor="middle">Transformer</text>
+  <text x="830" y="188" font-size="11" fill="#2d5c1e" text-anchor="middle">(attention over sequence)</text>
+
+  <!-- === ROW 2: IMAGE === -->
+  <text x="120" y="260" font-size="14" fill="#1f3a68" text-anchor="middle" font-weight="bold">Image</text>
+  <rect x="60" y="270" width="120" height="66" rx="6" fill="#fee2e2" stroke="#dc2626" stroke-width="1"/>
+  <text x="120" y="295" font-size="11" fill="#7a1d1d" text-anchor="middle">Photo</text>
+  <text x="120" y="313" font-size="10" fill="#7a1d1d" text-anchor="middle">224 × 224 pixels</text>
+  <text x="120" y="328" font-size="10" fill="#7a1d1d" text-anchor="middle">Red/Green/Blue</text>
+
+  <line x1="205" y1="303" x2="245" y2="303" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ar)"/>
+
+  <rect x="250" y="260" width="220" height="86" rx="8" fill="#f0f7ff" stroke="#4a7fd4" stroke-width="1"/>
+  <text x="360" y="282" font-size="12" fill="#1f3a68" text-anchor="middle">read raw pixel intensities</text>
+  <text x="360" y="302" font-size="11" font-family="Menlo, monospace" fill="#4a7fd4" text-anchor="middle">0-255 per (channel, row, col)</text>
+  <text x="360" y="322" font-size="12" fill="#1f3a68" text-anchor="middle">normalize to 0–1 (or -1 to 1)</text>
+  <text x="360" y="340" font-size="11" font-family="Menlo, monospace" fill="#4a7fd4" text-anchor="middle">tensor of floats</text>
+
+  <line x1="475" y1="303" x2="525" y2="303" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ar)"/>
+
+  <rect x="530" y="280" width="180" height="46" rx="8" fill="#fff8e6" stroke="#e08c2f"/>
+  <text x="620" y="302" font-size="12" font-family="Menlo, monospace" fill="#7a4408" text-anchor="middle">[channels, H, W]</text>
+  <text x="620" y="318" font-size="11" fill="#7a4408" text-anchor="middle">[3, 224, 224]</text>
+
+  <line x1="715" y1="303" x2="755" y2="303" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ar)"/>
+
+  <rect x="760" y="275" width="140" height="56" rx="8" fill="#e8f5e2" stroke="#5aa845" stroke-width="2"/>
+  <text x="830" y="298" font-size="14" font-weight="bold" fill="#2d5c1e" text-anchor="middle">CNN or ViT</text>
+  <text x="830" y="319" font-size="11" fill="#2d5c1e" text-anchor="middle">(local spatial patterns)</text>
+
+  <!-- === ROW 3: EEG (Phase 2 relevance) === -->
+  <text x="120" y="390" font-size="14" fill="#1f3a68" text-anchor="middle" font-weight="bold">EEG signal ⭐</text>
+  <rect x="40" y="400" width="160" height="66" rx="6" fill="#f3e8fd" stroke="#9b59d0" stroke-width="1.5"/>
+  <text x="120" y="422" font-size="11" fill="#5b2d85" text-anchor="middle">Voltage over time</text>
+  <text x="120" y="440" font-size="10" fill="#5b2d85" text-anchor="middle">from 4–8 electrodes</text>
+  <!-- little wavy line -->
+  <path d="M60 456 Q75 448, 90 456 T120 456 T150 456 T180 456" fill="none" stroke="#5b2d85" stroke-width="1.2"/>
+
+  <line x1="205" y1="433" x2="245" y2="433" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ar)"/>
+
+  <rect x="250" y="390" width="220" height="86" rx="8" fill="#f0f7ff" stroke="#4a7fd4" stroke-width="1"/>
+  <text x="360" y="412" font-size="12" fill="#1f3a68" text-anchor="middle">sample at e.g. 256 Hz</text>
+  <text x="360" y="432" font-size="11" font-family="Menlo, monospace" fill="#4a7fd4" text-anchor="middle">2 sec window = 512 samples</text>
+  <text x="360" y="452" font-size="12" fill="#1f3a68" text-anchor="middle">stack across channels</text>
+  <text x="360" y="470" font-size="11" font-family="Menlo, monospace" fill="#4a7fd4" text-anchor="middle">1D array per channel</text>
+
+  <line x1="475" y1="433" x2="525" y2="433" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ar)"/>
+
+  <rect x="530" y="410" width="180" height="46" rx="8" fill="#fff8e6" stroke="#e08c2f"/>
+  <text x="620" y="432" font-size="12" font-family="Menlo, monospace" fill="#7a4408" text-anchor="middle">[channels, samples]</text>
+  <text x="620" y="448" font-size="11" fill="#7a4408" text-anchor="middle">[4, 512]</text>
+
+  <line x1="715" y1="433" x2="755" y2="433" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ar)"/>
+
+  <rect x="760" y="405" width="140" height="56" rx="8" fill="#e8f5e2" stroke="#5aa845" stroke-width="2"/>
+  <text x="830" y="428" font-size="13" font-weight="bold" fill="#2d5c1e" text-anchor="middle">1D CNN or</text>
+  <text x="830" y="446" font-size="13" font-weight="bold" fill="#2d5c1e" text-anchor="middle">small transformer</text>
+
+  <!-- footer note -->
+  <rect x="30" y="500" width="880" height="46" rx="8" fill="#fef3c7" stroke="#d97706" stroke-width="1"/>
+  <text x="50" y="522" font-size="12" fill="#78350f" font-weight="bold">The key insight:</text>
+  <text x="50" y="540" font-size="12" fill="#78350f">Every input becomes a <tspan font-family="Menlo, monospace">tensor</tspan> (a multi-dimensional array of numbers). The architecture is chosen to match the tensor's <tspan font-style="italic">structure</tspan> — sequence, grid, or time-series.</text>
+</svg>

@@ -1,0 +1,79 @@
+<svg viewBox="0 0 940 470" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect width="940" height="470" fill="#ffffff"/>
+  <text x="470" y="32" font-size="18" font-weight="bold" fill="#1f2937" text-anchor="middle">Cloud LLM vs Local LLM</text>
+  <text x="470" y="54" font-size="12" fill="#6b7280" text-anchor="middle">Same "chat with an AI" experience — very different in where the compute happens</text>
+
+  <defs>
+    <marker id="arrb" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#4a7fd4"/>
+    </marker>
+    <marker id="arrg" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#5aa845"/>
+    </marker>
+  </defs>
+
+  <!-- LEFT: CLOUD -->
+  <rect x="30" y="80" width="430" height="360" rx="12" fill="#e2eefc" stroke="#4a7fd4" stroke-width="1.5"/>
+  <text x="245" y="108" font-size="16" font-weight="bold" fill="#1f3a68" text-anchor="middle">Cloud LLM (Claude, ChatGPT, Gemini, …)</text>
+
+  <rect x="55" y="140" width="80" height="50" rx="4" fill="#ffffff" stroke="#4a7fd4"/>
+  <text x="95" y="164" font-size="10" fill="#1f3a68" text-anchor="middle">your Mac</text>
+  <text x="95" y="180" font-size="9" fill="#6b7280" text-anchor="middle">prompt</text>
+
+  <path d="M140 165 Q 190 130, 240 165" fill="none" stroke="#4a7fd4" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrb)"/>
+  <text x="190" y="128" font-size="9" fill="#6b7280" text-anchor="middle">internet</text>
+
+  <ellipse cx="260" cy="165" rx="46" ry="28" fill="#ffffff" stroke="#4a7fd4" stroke-width="1.5"/>
+  <text x="260" y="162" font-size="10" fill="#1f3a68" text-anchor="middle">their GPUs</text>
+  <text x="260" y="176" font-size="9" fill="#6b7280" text-anchor="middle">(datacenter)</text>
+
+  <path d="M310 165 Q 355 130, 400 165" fill="none" stroke="#4a7fd4" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrb)"/>
+
+  <rect x="355" y="140" width="80" height="50" rx="4" fill="#ffffff" stroke="#4a7fd4"/>
+  <text x="395" y="164" font-size="10" fill="#1f3a68" text-anchor="middle">your Mac</text>
+  <text x="395" y="180" font-size="9" fill="#6b7280" text-anchor="middle">reply</text>
+
+  <text x="50" y="238" font-size="13" font-weight="bold" fill="#2d5c1e">Good:</text>
+  <text x="60" y="258" font-size="12" fill="#1f3a68">• Frontier-quality models (Claude Opus 4, GPT-5)</text>
+  <text x="60" y="276" font-size="12" fill="#1f3a68">• Zero setup; huge context windows</text>
+  <text x="60" y="294" font-size="12" fill="#1f3a68">• Their GPUs, not yours</text>
+
+  <text x="50" y="324" font-size="13" font-weight="bold" fill="#7a1d1d">Trade-offs:</text>
+  <text x="60" y="344" font-size="12" fill="#1f3a68">• Your prompts leave your machine</text>
+  <text x="60" y="362" font-size="12" fill="#1f3a68">• Needs internet; costs per token</text>
+  <text x="60" y="380" font-size="12" fill="#1f3a68">• Provider can change/deprecate models</text>
+  <text x="60" y="398" font-size="12" fill="#1f3a68">• Can't fine-tune or inspect internals</text>
+  <text x="60" y="416" font-size="12" fill="#1f3a68">• Won't work on a wearable EEG device</text>
+
+  <!-- RIGHT: LOCAL -->
+  <rect x="480" y="80" width="430" height="360" rx="12" fill="#e8f5e2" stroke="#5aa845" stroke-width="1.5"/>
+  <text x="695" y="108" font-size="16" font-weight="bold" fill="#2d5c1e" text-anchor="middle">Local LLM (Qwen, Llama, … on your Mac)</text>
+
+  <rect x="510" y="130" width="370" height="90" rx="6" fill="#ffffff" stroke="#5aa845" stroke-dasharray="5,3"/>
+  <text x="695" y="150" font-size="11" fill="#2d5c1e" text-anchor="middle">your Mac (M3 Pro, 18 GB unified memory)</text>
+
+  <rect x="530" y="165" width="80" height="40" rx="4" fill="#f0fdf4" stroke="#5aa845"/>
+  <text x="570" y="188" font-size="10" fill="#2d5c1e" text-anchor="middle">prompt</text>
+
+  <path d="M614 185 L 648 185" stroke="#5aa845" stroke-width="1.5" marker-end="url(#arrg)"/>
+
+  <rect x="650" y="165" width="140" height="40" rx="4" fill="#e8f5e2" stroke="#5aa845" stroke-width="1.5"/>
+  <text x="720" y="188" font-size="11" fill="#2d5c1e" text-anchor="middle">model in RAM</text>
+
+  <path d="M794 185 L 828 185" stroke="#5aa845" stroke-width="1.5" marker-end="url(#arrg)"/>
+
+  <rect x="830" y="165" width="55" height="40" rx="4" fill="#f0fdf4" stroke="#5aa845"/>
+  <text x="857" y="188" font-size="10" fill="#2d5c1e" text-anchor="middle">reply</text>
+
+  <text x="500" y="238" font-size="13" font-weight="bold" fill="#2d5c1e">Good:</text>
+  <text x="510" y="258" font-size="12" fill="#2d5c1e">• Data never leaves your machine (privacy)</text>
+  <text x="510" y="276" font-size="12" fill="#2d5c1e">• Works offline; no per-token cost</text>
+  <text x="510" y="294" font-size="12" fill="#2d5c1e">• Any open model — pick, swap, fine-tune, own it</text>
+  <text x="510" y="312" font-size="12" fill="#2d5c1e">• Best way to learn how models actually work</text>
+
+  <text x="500" y="342" font-size="13" font-weight="bold" fill="#7a4408">Trade-offs:</text>
+  <text x="510" y="362" font-size="12" fill="#2d5c1e">• Capped by your RAM (18 GB → ~14 B models)</text>
+  <text x="510" y="380" font-size="12" fill="#2d5c1e">• Quality below frontier cloud models</text>
+  <text x="510" y="398" font-size="12" fill="#2d5c1e">• You maintain the setup</text>
+  <text x="510" y="416" font-size="12" fill="#2d5c1e">• Slower on very long conversations</text>
+</svg>

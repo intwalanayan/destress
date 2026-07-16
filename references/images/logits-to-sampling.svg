@@ -1,0 +1,67 @@
+<svg viewBox="0 0 960 580" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect width="960" height="580" fill="#ffffff"/>
+  <text x="480" y="32" font-size="18" font-weight="bold" fill="#1f2937" text-anchor="middle">From logits to next token — how the model actually "chooses" a word</text>
+
+  <!-- Prompt so far -->
+  <rect x="30" y="60" width="900" height="42" rx="8" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+  <text x="50" y="88" font-size="13" fill="#78350f">Prompt so far:</text>
+  <text x="170" y="88" font-size="14" font-family="Menlo, monospace" fill="#78350f">"The cat sat on the ___"</text>
+
+  <!-- Step 1: logits (scores) -->
+  <text x="30" y="130" font-size="14" font-weight="bold" fill="#1f2937">Step 1 — Logits: model emits one raw score for EVERY word in its vocabulary (~152,000 numbers)</text>
+
+  <g font-family="Menlo, monospace" font-size="11" fill="#1f2937">
+    <text x="50" y="155">mat        →  8.42</text>
+    <text x="50" y="172">floor      →  6.13</text>
+    <text x="50" y="189">chair      →  5.87</text>
+    <text x="50" y="206">sofa       →  4.90</text>
+    <text x="50" y="223">rug        →  4.61</text>
+    <text x="50" y="240">table      →  3.44</text>
+    <text x="200" y="155">grass      →  2.10</text>
+    <text x="200" y="172">carpet     →  1.98</text>
+    <text x="200" y="189">bed        →  1.45</text>
+    <text x="200" y="206">horse      →  -1.20</text>
+    <text x="200" y="223">EEG        →  -3.90</text>
+    <text x="200" y="240">…</text>
+    <text x="350" y="155" fill="#6b7280">(and 151,988 more, mostly very negative)</text>
+  </g>
+
+  <text x="480" y="270" font-size="16" fill="#94a3b8" text-anchor="middle">↓  softmax turns scores into probabilities that sum to 1  ↓</text>
+
+  <!-- Step 2: probabilities as bar chart -->
+  <text x="30" y="300" font-size="14" font-weight="bold" fill="#1f2937">Step 2 — Probability distribution over next token:</text>
+
+  <g>
+    <text x="120" y="335" font-size="11" font-family="Menlo, monospace" fill="#1f2937" text-anchor="end">mat</text>
+    <rect x="130" y="322" width="450" height="18" rx="2" fill="#5aa845"/>
+    <text x="590" y="337" font-size="11" font-family="Menlo, monospace" fill="#1f2937">65%</text>
+
+    <text x="120" y="360" font-size="11" font-family="Menlo, monospace" fill="#1f2937" text-anchor="end">floor</text>
+    <rect x="130" y="347" width="105" height="18" rx="2" fill="#5aa845" opacity="0.65"/>
+    <text x="245" y="362" font-size="11" font-family="Menlo, monospace" fill="#1f2937">15%</text>
+
+    <text x="120" y="385" font-size="11" font-family="Menlo, monospace" fill="#1f2937" text-anchor="end">chair</text>
+    <rect x="130" y="372" width="55" height="18" rx="2" fill="#5aa845" opacity="0.5"/>
+    <text x="195" y="387" font-size="11" font-family="Menlo, monospace" fill="#1f2937">8%</text>
+
+    <text x="120" y="410" font-size="11" font-family="Menlo, monospace" fill="#1f2937" text-anchor="end">sofa</text>
+    <rect x="130" y="397" width="35" height="18" rx="2" fill="#5aa845" opacity="0.4"/>
+    <text x="175" y="412" font-size="11" font-family="Menlo, monospace" fill="#1f2937">5%</text>
+
+    <text x="120" y="435" font-size="11" font-family="Menlo, monospace" fill="#1f2937" text-anchor="end">rug</text>
+    <rect x="130" y="422" width="25" height="18" rx="2" fill="#5aa845" opacity="0.35"/>
+    <text x="165" y="437" font-size="11" font-family="Menlo, monospace" fill="#1f2937">4%</text>
+
+    <text x="120" y="460" font-size="11" font-family="Menlo, monospace" fill="#6b7280" text-anchor="end">others</text>
+    <rect x="130" y="447" width="20" height="18" rx="2" fill="#94a3b8"/>
+    <text x="160" y="462" font-size="11" font-family="Menlo, monospace" fill="#6b7280">3%</text>
+  </g>
+
+  <!-- Step 3: sampling -->
+  <rect x="30" y="490" width="900" height="80" rx="10" fill="#f3e8fd" stroke="#9b59d0" stroke-width="1.5"/>
+  <text x="50" y="513" font-size="14" font-weight="bold" fill="#5b2d85">Step 3 — Sampling: pick ONE token from that distribution</text>
+
+  <text x="50" y="535" font-size="11" fill="#5b2d85"><tspan font-weight="bold">temperature = 0</tspan> (greedy) — always pick the top: "mat". Deterministic, sometimes boring.</text>
+  <text x="50" y="551" font-size="11" fill="#5b2d85"><tspan font-weight="bold">temperature = 0.7</tspan> (default) — mostly "mat", occasionally "floor" or "chair". Balanced.</text>
+  <text x="50" y="567" font-size="11" fill="#5b2d85"><tspan font-weight="bold">temperature = 1.5</tspan> — flattens the distribution; "sofa" and "rug" become plausible. Creative or unhinged, depending.</text>
+</svg>

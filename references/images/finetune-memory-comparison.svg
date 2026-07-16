@@ -1,0 +1,46 @@
+<svg viewBox="0 0 960 500" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect width="960" height="500" fill="#ffffff"/>
+  <text x="480" y="32" font-size="18" font-weight="bold" fill="#1f2937" text-anchor="middle">Fine-tuning Qwen3-8B: memory needed at each level</text>
+  <text x="480" y="54" font-size="12" fill="#6b7280" text-anchor="middle">Why LoRA and especially QLoRA exist — full fine-tuning simply won't fit on your Mac.</text>
+
+  <!-- 18 GB reference line -->
+  <line x1="60" y1="150" x2="900" y2="150" stroke="#dc2626" stroke-width="2" stroke-dasharray="6,3"/>
+  <text x="905" y="155" font-size="11" fill="#dc2626">your 18 GB ceiling</text>
+
+  <!-- Y axis -->
+  <text x="45" y="90" font-size="10" fill="#6b7280" text-anchor="end">60 GB</text>
+  <text x="45" y="135" font-size="10" fill="#6b7280" text-anchor="end">30 GB</text>
+  <text x="45" y="155" font-size="10" fill="#6b7280" text-anchor="end">18 GB</text>
+  <text x="45" y="255" font-size="10" fill="#6b7280" text-anchor="end">6 GB</text>
+  <text x="45" y="325" font-size="10" fill="#6b7280" text-anchor="end">0 GB</text>
+
+  <!-- Bar 1: Full fine-tuning -->
+  <rect x="120" y="65" width="180" height="260" fill="#dc2626" stroke="#7a1d1d" stroke-width="1.5"/>
+  <text x="210" y="345" font-size="13" font-weight="bold" fill="#7a1d1d" text-anchor="middle">Full fine-tuning</text>
+  <text x="210" y="362" font-size="11" fill="#7a1d1d" text-anchor="middle">~60 GB</text>
+  <text x="210" y="380" font-size="10" fill="#6b7280" text-anchor="middle">weights + gradients +</text>
+  <text x="210" y="393" font-size="10" fill="#6b7280" text-anchor="middle">optimizer state (Adam)</text>
+  <text x="210" y="410" font-size="11" font-style="italic" font-weight="bold" fill="#dc2626" text-anchor="middle">Won't fit — needs a datacenter GPU</text>
+
+  <!-- Bar 2: LoRA -->
+  <rect x="380" y="180" width="180" height="145" fill="#e08c2f" stroke="#7a4408" stroke-width="1.5"/>
+  <text x="470" y="345" font-size="13" font-weight="bold" fill="#7a4408" text-anchor="middle">LoRA fine-tuning</text>
+  <text x="470" y="362" font-size="11" fill="#7a4408" text-anchor="middle">~13 GB</text>
+  <text x="470" y="380" font-size="10" fill="#6b7280" text-anchor="middle">frozen weights (FP16) +</text>
+  <text x="470" y="393" font-size="10" fill="#6b7280" text-anchor="middle">tiny adapter + its state</text>
+  <text x="470" y="410" font-size="11" font-style="italic" font-weight="bold" fill="#e08c2f" text-anchor="middle">Fits, but tight on 18 GB</text>
+
+  <!-- Bar 3: QLoRA -->
+  <rect x="640" y="255" width="180" height="70" fill="#059669" stroke="#166534" stroke-width="1.5"/>
+  <text x="730" y="345" font-size="13" font-weight="bold" fill="#166534" text-anchor="middle">QLoRA (LoRA + 4-bit)</text>
+  <text x="730" y="362" font-size="11" fill="#166534" text-anchor="middle">~6 GB</text>
+  <text x="730" y="380" font-size="10" fill="#6b7280" text-anchor="middle">frozen weights (4-bit) +</text>
+  <text x="730" y="393" font-size="10" fill="#6b7280" text-anchor="middle">tiny adapter + its state</text>
+  <text x="730" y="410" font-size="11" font-style="italic" font-weight="bold" fill="#059669" text-anchor="middle">Comfortable — our choice</text>
+
+  <!-- What each bar contains breakdown -->
+  <rect x="30" y="435" width="900" height="60" rx="10" fill="#fff8e6" stroke="#e08c2f" stroke-width="1"/>
+  <text x="50" y="457" font-size="12" fill="#7a4408"><tspan font-weight="bold">Why full fine-tuning is so heavy:</tspan> for every weight, you need to store the weight itself + a gradient + Adam's momentum + variance state.</text>
+  <text x="50" y="475" font-size="12" fill="#7a4408">That's roughly 4× the weight footprint. For an 8B model in FP16 → 60 GB.</text>
+  <text x="50" y="490" font-size="12" fill="#7a4408"><tspan font-weight="bold">LoRA avoids most of it</tspan> — only the tiny adapter needs those extras. And <tspan font-weight="bold">QLoRA</tspan> further compresses the frozen base to 4-bit.</text>
+</svg>

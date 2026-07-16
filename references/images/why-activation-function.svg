@@ -1,0 +1,82 @@
+<svg viewBox="0 0 960 620" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect width="960" height="620" fill="#ffffff"/>
+  <text x="480" y="32" font-size="18" font-weight="bold" fill="#1f2937" text-anchor="middle">Why we squash `n` through tanh — the "non-linearity" trick</text>
+  <text x="480" y="54" font-size="12" fill="#6b7280" text-anchor="middle">Without a non-linear step, a stack of layers collapses into a single straight line.</text>
+
+  <!-- LEFT: without activation -->
+  <rect x="30" y="80" width="440" height="280" rx="10" fill="#fecaca" stroke="#dc2626" stroke-width="1.5"/>
+  <text x="250" y="105" font-size="14" font-weight="bold" fill="#7a1d1d" text-anchor="middle">Without tanh — two linear layers</text>
+
+  <g font-family="Menlo, monospace" font-size="12" fill="#7a1d1d">
+    <text x="50" y="135">layer 1:   y  =  2·x  +  3</text>
+    <text x="50" y="153">layer 2:   z  =  5·y  +  1</text>
+    <text x="50" y="185">substitute:</text>
+    <text x="50" y="203">     z  =  5·(2·x + 3) + 1</text>
+    <text x="50" y="221">     z  =  10·x  +  16</text>
+  </g>
+
+  <text x="50" y="248" font-size="12" fill="#7a1d1d" font-weight="bold">→ Still ONE straight line.</text>
+  <text x="50" y="266" font-size="11" fill="#7a1d1d">Two layers, ten layers, a million layers —</text>
+  <text x="50" y="282" font-size="11" fill="#7a1d1d">no matter what, the whole stack collapses</text>
+  <text x="50" y="298" font-size="11" fill="#7a1d1d">into one linear equation.</text>
+
+  <!-- Mini graph showing straight line -->
+  <line x1="270" y1="330" x2="440" y2="330" stroke="#7a1d1d" stroke-width="0.7"/>
+  <line x1="290" y1="150" x2="290" y2="340" stroke="#7a1d1d" stroke-width="0.7"/>
+  <line x1="280" y1="320" x2="440" y2="170" stroke="#dc2626" stroke-width="2.5"/>
+  <text x="355" y="352" font-size="10" fill="#7a1d1d" text-anchor="middle">x →</text>
+  <text x="280" y="235" font-size="10" fill="#7a1d1d" text-anchor="end">z ↑</text>
+
+  <!-- RIGHT: with tanh -->
+  <rect x="490" y="80" width="440" height="280" rx="10" fill="#e8f5e2" stroke="#5aa845" stroke-width="1.5"/>
+  <text x="710" y="105" font-size="14" font-weight="bold" fill="#2d5c1e" text-anchor="middle">With tanh — the same two layers</text>
+
+  <g font-family="Menlo, monospace" font-size="12" fill="#2d5c1e">
+    <text x="510" y="135">layer 1:   y  =  tanh( 2·x + 3 )</text>
+    <text x="510" y="153">layer 2:   z  =  5·y  +  1</text>
+    <text x="510" y="185">The tanh bends things.</text>
+    <text x="510" y="203">You can't simplify to a straight line.</text>
+    <text x="510" y="221">The stack has real expressive power.</text>
+  </g>
+
+  <text x="510" y="252" font-size="12" fill="#2d5c1e" font-weight="bold">→ A CURVE.</text>
+  <text x="510" y="270" font-size="11" fill="#2d5c1e">Now stack many layers with tanh between</text>
+  <text x="510" y="286" font-size="11" fill="#2d5c1e">them and you can approximate almost any</text>
+  <text x="510" y="302" font-size="11" fill="#2d5c1e">function — including "photo → cat?"</text>
+
+  <!-- Mini graph showing S-curve -->
+  <line x1="730" y1="330" x2="900" y2="330" stroke="#2d5c1e" stroke-width="0.7"/>
+  <line x1="750" y1="150" x2="750" y2="340" stroke="#2d5c1e" stroke-width="0.7"/>
+  <path d="M 740 320 Q 800 320, 820 240 T 900 165" stroke="#5aa845" stroke-width="2.5" fill="none"/>
+  <text x="815" y="352" font-size="10" fill="#2d5c1e" text-anchor="middle">x →</text>
+  <text x="740" y="235" font-size="10" fill="#2d5c1e" text-anchor="end">z ↑</text>
+
+  <!-- BOTTOM: What tanh itself looks like -->
+  <rect x="30" y="380" width="900" height="220" rx="10" fill="#fff8e6" stroke="#e08c2f" stroke-width="1.5"/>
+  <text x="480" y="404" font-size="15" font-weight="bold" fill="#7a4408" text-anchor="middle">What tanh(x) actually does — a "squasher" between −1 and +1</text>
+
+  <!-- Axes -->
+  <line x1="200" y1="530" x2="760" y2="530" stroke="#7a4408" stroke-width="1"/>
+  <line x1="480" y1="430" x2="480" y2="580" stroke="#7a4408" stroke-width="1"/>
+
+  <!-- Tanh curve: -3 to 3 on x-axis, -1 to 1 on y-axis -->
+  <path d="M 220 528 C 380 528 400 528 440 520 C 460 515 470 500 480 480 C 490 460 500 445 520 440 C 560 432 580 432 740 432" fill="none" stroke="#e08c2f" stroke-width="3"/>
+
+  <!-- Labels on curve -->
+  <text x="200" y="545" font-size="10" fill="#7a4408" text-anchor="middle">x = −3</text>
+  <text x="480" y="548" font-size="10" fill="#7a4408" text-anchor="middle">x = 0</text>
+  <text x="760" y="545" font-size="10" fill="#7a4408" text-anchor="middle">x = +3</text>
+
+  <!-- Y labels -->
+  <text x="472" y="435" font-size="10" fill="#7a4408" text-anchor="end">+1</text>
+  <line x1="475" y1="432" x2="485" y2="432" stroke="#7a4408"/>
+  <text x="472" y="530" font-size="10" fill="#7a4408" text-anchor="end">0</text>
+  <text x="472" y="583" font-size="10" fill="#7a4408" text-anchor="end">−1</text>
+  <line x1="475" y1="580" x2="485" y2="580" stroke="#7a4408"/>
+
+  <text x="220" y="510" font-size="10" fill="#7a4408">"very negative → −1"</text>
+  <text x="565" y="450" font-size="10" fill="#7a4408">"very positive → +1"</text>
+  <text x="490" y="510" font-size="10" fill="#7a4408">"near 0, roughly straight line"</text>
+
+  <text x="480" y="600" font-size="11" font-style="italic" fill="#7a4408" text-anchor="middle">Big numbers get squashed. Small numbers pass through almost unchanged. This is the "bend" that makes stacking layers useful.</text>
+</svg>

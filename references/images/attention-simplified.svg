@@ -1,0 +1,78 @@
+<svg viewBox="0 0 960 640" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect width="960" height="640" fill="#ffffff"/>
+  <text x="480" y="32" font-size="18" font-weight="bold" fill="#1f2937" text-anchor="middle">One transformer layer — think "group brainstorming session"</text>
+  <text x="480" y="54" font-size="12" fill="#6b7280" text-anchor="middle">Tokens are people in a room. Each has a note about their meaning. They update their notes based on the others.</text>
+
+  <!-- STEP 1: BEFORE -->
+  <text x="30" y="90" font-size="14" font-weight="bold" fill="#1f2937">Step 1 — Coming into the layer: 5 tokens, each holds their own "note" (a 4,096-number vector)</text>
+
+  <g>
+    <!-- The -->
+    <circle cx="120" cy="145" r="22" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+    <text x="120" y="149" font-size="11" fill="#1f2937" text-anchor="middle">The</text>
+    <rect x="93" y="180" width="54" height="8" fill="#94a3b8" opacity="0.4"/>
+    <text x="120" y="205" font-size="9" fill="#6b7280" text-anchor="middle">its note</text>
+
+    <!-- cat -->
+    <circle cx="270" cy="145" r="22" fill="#e8f5e2" stroke="#5aa845" stroke-width="2"/>
+    <text x="270" y="149" font-size="11" fill="#2d5c1e" text-anchor="middle" font-weight="bold">cat</text>
+    <rect x="243" y="180" width="54" height="8" fill="#5aa845" opacity="0.8"/>
+    <text x="270" y="205" font-size="9" fill="#6b7280" text-anchor="middle">"animal-ish"</text>
+
+    <!-- sat -->
+    <circle cx="420" cy="145" r="22" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+    <text x="420" y="149" font-size="11" fill="#1f2937" text-anchor="middle">sat</text>
+    <rect x="393" y="180" width="54" height="8" fill="#94a3b8" opacity="0.4"/>
+    <text x="420" y="205" font-size="9" fill="#6b7280" text-anchor="middle">its note</text>
+
+    <!-- mat -->
+    <circle cx="570" cy="145" r="22" fill="#fdeede" stroke="#e08c2f" stroke-width="2"/>
+    <text x="570" y="149" font-size="11" fill="#7a4408" text-anchor="middle" font-weight="bold">mat</text>
+    <rect x="543" y="180" width="54" height="8" fill="#e08c2f" opacity="0.7"/>
+    <text x="570" y="205" font-size="9" fill="#6b7280" text-anchor="middle">"surface-ish"</text>
+
+    <!-- it -->
+    <circle cx="720" cy="145" r="24" fill="#fecaca" stroke="#dc2626" stroke-width="2.5"/>
+    <text x="720" y="149" font-size="11" fill="#7a1d1d" text-anchor="middle" font-weight="bold">it</text>
+    <rect x="693" y="180" width="54" height="8" fill="#dc2626" opacity="0.3"/>
+    <text x="720" y="205" font-size="9" fill="#6b7280" text-anchor="middle">"pronoun-ish"</text>
+    <text x="720" y="220" font-size="9" font-style="italic" fill="#7a1d1d" text-anchor="middle">(vague on its own)</text>
+  </g>
+
+  <!-- STEP 2: ATTENTION -->
+  <text x="30" y="260" font-size="14" font-weight="bold" fill="#1f2937">Step 2 — Attention: "it" looks around the room, asks "who's relevant to me?"</text>
+
+  <text x="30" y="285" font-size="11" fill="#6b7280">Every token plays 3 roles at once:</text>
+  <text x="45" y="303" font-size="11" fill="#4a7fd4"><tspan font-weight="bold">Wish (Query)</tspan> — "what am I looking for?"  (comes from your own note)</text>
+  <text x="45" y="319" font-size="11" fill="#059669"><tspan font-weight="bold">Tag (Key)</tspan> — "what kind of thing am I?"  (comes from your own note)</text>
+  <text x="45" y="335" font-size="11" fill="#dc2626"><tspan font-weight="bold">Content (Value)</tspan> — "here's what I'll contribute"  (comes from your own note)</text>
+
+  <text x="30" y="360" font-size="11" fill="#1f2937"><tspan font-weight="bold">"it" scores itself against everyone else's Tag:</tspan></text>
+
+  <g font-family="Menlo, monospace" font-size="11" fill="#1f2937">
+    <text x="45" y="380">it.wish  ×  cat.tag   =  <tspan fill="#059669" font-weight="bold">high match — score 0.62</tspan></text>
+    <text x="45" y="398">it.wish  ×  mat.tag   =  <tspan fill="#e08c2f">medium match — score 0.18</tspan></text>
+    <text x="45" y="416">it.wish  ×  sat.tag   =  low match — score 0.05</text>
+    <text x="45" y="434">it.wish  ×  The.tag   =  low match — score 0.03</text>
+    <text x="45" y="452">it.wish  ×  it.tag    =  self — score 0.12</text>
+  </g>
+
+  <text x="30" y="478" font-size="11" fill="#1f2937"><tspan font-weight="bold">Then "it" takes a weighted mix of everyone's Content, scaled by those scores:</tspan></text>
+  <text x="45" y="496" font-size="11" font-family="Menlo, monospace" fill="#1f2937">new_it_note  =  0.62·cat.content + 0.18·mat.content + 0.12·it.content + …</text>
+
+  <!-- STEP 3: AFTER -->
+  <text x="30" y="530" font-size="14" font-weight="bold" fill="#1f2937">Step 3 — After attention: "it"'s note has absorbed mostly "cat" info, a bit of "mat"</text>
+
+  <g>
+    <circle cx="720" cy="580" r="24" fill="#fecaca" stroke="#dc2626" stroke-width="2.5"/>
+    <text x="720" y="584" font-size="11" fill="#7a1d1d" text-anchor="middle" font-weight="bold">it</text>
+    <!-- new mixed note: green (cat) mostly, some orange (mat), tiny red (self) -->
+    <rect x="693" y="615" width="34" height="8" fill="#5aa845" opacity="0.8"/>
+    <rect x="727" y="615" width="10" height="8" fill="#e08c2f" opacity="0.7"/>
+    <rect x="737" y="615" width="10" height="8" fill="#dc2626" opacity="0.3"/>
+  </g>
+  <text x="60" y="580" font-size="12" fill="#1f2937">"it"'s new note ≈ mostly cat-flavored, some mat-flavored, faint bit of self.</text>
+  <text x="60" y="598" font-size="12" fill="#1f2937">Every other token in the sentence also updates its own note the same way (parallel).</text>
+  <text x="60" y="616" font-size="12" fill="#1f2937">Then a small "polish" step (feed-forward) — each token cleans up its own note individually.</text>
+  <text x="60" y="634" font-size="12" font-weight="bold" fill="#5b2d85">That's one transformer layer. Qwen3-8B stacks 36 of them — each one refines the notes further.</text>
+</svg>

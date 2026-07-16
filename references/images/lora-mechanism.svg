@@ -1,0 +1,92 @@
+<svg viewBox="0 0 960 620" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect width="960" height="620" fill="#ffffff"/>
+  <text x="480" y="32" font-size="18" font-weight="bold" fill="#1f2937" text-anchor="middle">The LoRA trick — freeze the giant weights, train two tiny "adapter" matrices</text>
+  <text x="480" y="54" font-size="12" fill="#6b7280" text-anchor="middle">Same model, ~250× fewer numbers to train. Fits comfortably on 18 GB.</text>
+
+  <!-- LEFT: Original layer -->
+  <text x="180" y="90" font-size="14" font-weight="bold" fill="#6b7280" text-anchor="middle">Before LoRA (one layer of a big model)</text>
+
+  <!-- Input arrow -->
+  <rect x="60" y="115" width="50" height="40" rx="4" fill="#e2eefc" stroke="#4a7fd4"/>
+  <text x="85" y="140" font-size="12" font-family="Menlo, monospace" fill="#1f3a68" text-anchor="middle">x</text>
+  <text x="85" y="170" font-size="9" fill="#6b7280" text-anchor="middle">input</text>
+
+  <text x="130" y="145" font-size="18" fill="#94a3b8">→</text>
+
+  <!-- Big frozen matrix -->
+  <rect x="155" y="105" width="140" height="130" rx="8" fill="#94a3b8" stroke="#475569" stroke-width="2"/>
+  <text x="225" y="130" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">W</text>
+  <text x="225" y="150" font-size="10" fill="#ffffff" text-anchor="middle">weight matrix</text>
+  <text x="225" y="170" font-size="9" fill="#ffffff" text-anchor="middle">shape 4,096 × 4,096</text>
+  <text x="225" y="187" font-size="9" fill="#ffffff" text-anchor="middle">= 16.8 M numbers</text>
+  <text x="225" y="212" font-size="10" font-weight="bold" fill="#fef3c7" text-anchor="middle">FROZEN</text>
+  <text x="225" y="226" font-size="9" fill="#fef3c7" text-anchor="middle">(never changes)</text>
+
+  <text x="310" y="180" font-size="18" fill="#94a3b8">→</text>
+
+  <rect x="335" y="115" width="60" height="40" rx="4" fill="#e2eefc" stroke="#4a7fd4"/>
+  <text x="365" y="140" font-size="12" font-family="Menlo, monospace" fill="#1f3a68" text-anchor="middle">W·x</text>
+  <text x="365" y="170" font-size="9" fill="#6b7280" text-anchor="middle">output</text>
+
+  <!-- Separator -->
+  <line x1="30" y1="270" x2="930" y2="270" stroke="#94a3b8" stroke-width="1" stroke-dasharray="8,4"/>
+
+  <!-- RIGHT: With LoRA -->
+  <text x="480" y="300" font-size="14" font-weight="bold" fill="#e08c2f" text-anchor="middle">With LoRA — add a tiny side path with TWO small matrices</text>
+
+  <!-- Input -->
+  <rect x="60" y="360" width="50" height="40" rx="4" fill="#e2eefc" stroke="#4a7fd4"/>
+  <text x="85" y="385" font-size="12" font-family="Menlo, monospace" fill="#1f3a68" text-anchor="middle">x</text>
+
+  <text x="130" y="390" font-size="18" fill="#94a3b8">→</text>
+
+  <!-- Big frozen matrix (again) -->
+  <rect x="155" y="335" width="140" height="90" rx="8" fill="#94a3b8" stroke="#475569" stroke-width="2"/>
+  <text x="225" y="360" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">W (unchanged)</text>
+  <text x="225" y="380" font-size="9" fill="#ffffff" text-anchor="middle">16.8 M numbers</text>
+  <text x="225" y="405" font-size="10" font-weight="bold" fill="#fef3c7" text-anchor="middle">FROZEN</text>
+
+  <!-- Side path: A → B -->
+  <path d="M 85 400 L 85 480 L 400 480" fill="none" stroke="#e08c2f" stroke-width="2"/>
+
+  <rect x="420" y="465" width="60" height="30" rx="4" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <text x="450" y="484" font-size="12" font-weight="bold" fill="#7a4408" text-anchor="middle">A</text>
+
+  <text x="490" y="485" font-size="10" fill="#7a4408">4,096 × 8   = 32K</text>
+
+  <path d="M 480 480 L 550 480" fill="none" stroke="#e08c2f" stroke-width="2" marker-end="url(#aro)"/>
+
+  <rect x="555" y="465" width="60" height="30" rx="4" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <text x="585" y="484" font-size="12" font-weight="bold" fill="#7a4408" text-anchor="middle">B</text>
+
+  <text x="625" y="485" font-size="10" fill="#7a4408">8 × 4,096   = 32K</text>
+
+  <path d="M 615 480 L 730 480 L 730 420" fill="none" stroke="#e08c2f" stroke-width="2" marker-end="url(#aro)"/>
+
+  <text x="500" y="513" font-size="11" font-weight="bold" fill="#7a4408" text-anchor="middle">these two ARE trained (65,000 numbers total — vs 16.8 M)</text>
+
+  <!-- Combine -->
+  <text x="310" y="380" font-size="18" fill="#94a3b8">→</text>
+
+  <circle cx="345" cy="380" r="18" fill="#e08c2f" stroke="#7a4408" stroke-width="2"/>
+  <text x="345" y="386" font-size="18" font-weight="bold" fill="#ffffff" text-anchor="middle">+</text>
+
+  <text x="380" y="385" font-size="18" fill="#94a3b8">→</text>
+
+  <rect x="410" y="360" width="130" height="40" rx="4" fill="#e2eefc" stroke="#4a7fd4"/>
+  <text x="475" y="385" font-size="12" font-family="Menlo, monospace" fill="#1f3a68" text-anchor="middle">W·x  +  B·A·x</text>
+
+  <text x="475" y="415" font-size="10" fill="#6b7280" text-anchor="middle">final output</text>
+
+  <defs>
+    <marker id="aro" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#e08c2f"/>
+    </marker>
+  </defs>
+
+  <!-- Explanatory box -->
+  <rect x="30" y="530" width="900" height="80" rx="10" fill="#fff8e6" stroke="#e08c2f" stroke-width="1.5"/>
+  <text x="50" y="553" font-size="14" font-weight="bold" fill="#7a4408">Why the numbers work out:</text>
+  <text x="50" y="574" font-size="12" fill="#7a4408">The two skinny matrices <tspan font-family="Menlo, monospace" font-weight="bold">A</tspan> (4,096 × 8) and <tspan font-family="Menlo, monospace" font-weight="bold">B</tspan> (8 × 4,096) have <tspan font-weight="bold">~65 K numbers total</tspan> instead of W's 16.8 M — a <tspan font-weight="bold">~250× reduction</tspan>.</text>
+  <text x="50" y="592" font-size="12" fill="#7a4408">The little "8" in the middle is the <tspan font-weight="bold">LoRA rank r</tspan> — a knob YOU pick. Small r = fewer trainable numbers; larger r = more capacity for change.</text>
+</svg>

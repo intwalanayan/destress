@@ -1,0 +1,84 @@
+<svg viewBox="0 0 940 620" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect width="940" height="620" fill="#ffffff"/>
+  <text x="470" y="32" font-size="18" font-weight="bold" fill="#1f2937" text-anchor="middle">The smallest possible "model": predicting exam score from hours studied</text>
+
+  <!-- PANEL 1: OBSERVATION -->
+  <rect x="30" y="60" width="435" height="230" rx="10" fill="#f0f7ff" stroke="#4a7fd4" stroke-width="1.5"/>
+  <text x="45" y="85" font-size="14" font-weight="bold" fill="#1f3a68">STEP 1 — You notice a pattern</text>
+
+  <line x1="80" y1="255" x2="440" y2="255" stroke="#1f3a68" stroke-width="1"/>
+  <line x1="80" y1="110" x2="80" y2="255" stroke="#1f3a68" stroke-width="1"/>
+  <text x="260" y="278" font-size="11" fill="#1f3a68" text-anchor="middle">hours studied →</text>
+  <text x="60" y="185" font-size="11" fill="#1f3a68" text-anchor="middle" transform="rotate(-90 60 185)">exam score →</text>
+
+  <circle cx="140" cy="194" r="4" fill="#1f3a68"/>
+  <circle cx="170" cy="185" r="4" fill="#1f3a68"/>
+  <circle cx="200" cy="175" r="4" fill="#1f3a68"/>
+  <circle cx="230" cy="168" r="4" fill="#1f3a68"/>
+  <circle cx="260" cy="161" r="4" fill="#1f3a68"/>
+  <circle cx="290" cy="156" r="4" fill="#1f3a68"/>
+  <circle cx="320" cy="146" r="4" fill="#1f3a68"/>
+  <circle cx="350" cy="139" r="4" fill="#1f3a68"/>
+  <circle cx="380" cy="132" r="4" fill="#1f3a68"/>
+
+  <!-- PANEL 2: PICK THE EQUATION -->
+  <rect x="480" y="60" width="435" height="230" rx="10" fill="#fff8e6" stroke="#e08c2f" stroke-width="1.5"/>
+  <text x="495" y="85" font-size="14" font-weight="bold" fill="#7a4408">STEP 2 — YOU (a human) pick the equation shape</text>
+
+  <text x="697" y="155" font-size="24" font-family="Menlo, monospace" fill="#7a4408" text-anchor="middle">score = w × hours + b</text>
+
+  <text x="500" y="190" font-size="12" fill="#7a4408"><tspan font-family="Menlo, monospace" font-weight="bold">w</tspan> = "how many marks each hour of study adds"</text>
+  <text x="500" y="212" font-size="12" fill="#7a4408"><tspan font-family="Menlo, monospace" font-weight="bold">b</tspan> = "baseline score even with zero hours"</text>
+  <text x="500" y="248" font-size="12" font-style="italic" fill="#7a4408">You picked "a line" because the dots looked line-shaped.</text>
+  <text x="500" y="266" font-size="12" font-style="italic" fill="#7a4408">You DON'T know w or b yet — training will find them.</text>
+
+  <!-- PANEL 3: TRAINING -->
+  <rect x="30" y="310" width="435" height="270" rx="10" fill="#e8f5e2" stroke="#5aa845" stroke-width="1.5"/>
+  <text x="45" y="335" font-size="14" font-weight="bold" fill="#2d5c1e">STEP 3 — Training tries knob values, picks the best-fit line</text>
+
+  <line x1="80" y1="540" x2="440" y2="540" stroke="#2d5c1e" stroke-width="1"/>
+  <line x1="80" y1="395" x2="80" y2="540" stroke="#2d5c1e" stroke-width="1"/>
+  <text x="260" y="562" font-size="11" fill="#2d5c1e" text-anchor="middle">hours studied →</text>
+
+  <circle cx="140" cy="479" r="4" fill="#2d5c1e"/>
+  <circle cx="170" cy="470" r="4" fill="#2d5c1e"/>
+  <circle cx="200" cy="460" r="4" fill="#2d5c1e"/>
+  <circle cx="230" cy="453" r="4" fill="#2d5c1e"/>
+  <circle cx="260" cy="446" r="4" fill="#2d5c1e"/>
+  <circle cx="290" cy="441" r="4" fill="#2d5c1e"/>
+  <circle cx="320" cy="431" r="4" fill="#2d5c1e"/>
+  <circle cx="350" cy="424" r="4" fill="#2d5c1e"/>
+  <circle cx="380" cy="417" r="4" fill="#2d5c1e"/>
+
+  <line x1="80" y1="475" x2="440" y2="440" stroke="#dc2626" stroke-width="2" stroke-dasharray="6,4"/>
+  <text x="98" y="470" font-size="10" fill="#dc2626">bad guess: w=2, b=45 — misses</text>
+
+  <line x1="80" y1="494" x2="440" y2="407" stroke="#059669" stroke-width="2.5"/>
+  <text x="220" y="418" font-size="11" font-weight="bold" fill="#059669">trained: w=5, b=32 — fits!</text>
+
+  <!-- PANEL 4: INFERENCE -->
+  <rect x="480" y="310" width="435" height="270" rx="10" fill="#f3e8fd" stroke="#9b59d0" stroke-width="1.5"/>
+  <text x="495" y="335" font-size="14" font-weight="bold" fill="#5b2d85">STEP 4 — Use the trained model (this is "inference")</text>
+
+  <rect x="510" y="375" width="105" height="60" rx="8" fill="#ffffff" stroke="#9b59d0"/>
+  <text x="562" y="398" font-size="11" fill="#5b2d85" text-anchor="middle">new input</text>
+  <text x="562" y="422" font-size="16" font-weight="bold" fill="#5b2d85" text-anchor="middle">7 hours</text>
+
+  <text x="632" y="410" font-size="20" fill="#5b2d85">→</text>
+
+  <rect x="655" y="375" width="170" height="60" rx="8" fill="#ffffff" stroke="#9b59d0"/>
+  <text x="740" y="398" font-size="12" font-family="Menlo, monospace" fill="#5b2d85" text-anchor="middle">score = 5 × 7 + 32</text>
+  <text x="740" y="422" font-size="15" font-weight="bold" fill="#5b2d85" text-anchor="middle">= 67</text>
+
+  <text x="842" y="410" font-size="20" fill="#5b2d85">→</text>
+
+  <rect x="862" y="375" width="46" height="60" rx="8" fill="#9b59d0"/>
+  <text x="885" y="398" font-size="10" fill="#ffffff" text-anchor="middle">score</text>
+  <text x="885" y="422" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">67</text>
+
+  <text x="510" y="475" font-size="12" fill="#5b2d85">The finished "model" is nothing but:</text>
+  <text x="520" y="495" font-size="12" font-family="Menlo, monospace" fill="#5b2d85">• equation shape:  score = w × hours + b</text>
+  <text x="520" y="513" font-size="12" font-family="Menlo, monospace" fill="#5b2d85">• two learned knobs:  w = 5,  b = 32</text>
+  <text x="510" y="545" font-size="12" font-style="italic" fill="#5b2d85">A real model is the same idea, just with billions of knobs</text>
+  <text x="510" y="562" font-size="12" font-style="italic" fill="#5b2d85">and dozens of chained equations instead of one.</text>
+</svg>

@@ -1,0 +1,47 @@
+<svg viewBox="0 0 960 620" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect width="960" height="620" fill="#ffffff"/>
+  <text x="480" y="32" font-size="18" font-weight="bold" fill="#1f2937" text-anchor="middle">Five ways to customize an LLM — from "just talk to it" to "train your own"</text>
+  <text x="480" y="54" font-size="12" fill="#6b7280" text-anchor="middle">Left → right: more control, more effort, more cost. Fine-tuning is a middle-ground sweet spot.</text>
+
+  <!-- Row 1: Prompt engineering -->
+  <rect x="30" y="80" width="900" height="90" rx="10" fill="#e2eefc" stroke="#4a7fd4" stroke-width="1.5"/>
+  <text x="45" y="105" font-size="14" font-weight="bold" fill="#1f3a68">1. Prompt engineering</text>
+  <text x="700" y="105" font-size="11" fill="#1f3a68" text-anchor="end">✱ zero training  •  seconds to try  •  works with any API</text>
+  <text x="45" y="128" font-size="12" fill="#1f3a68">Just write a better prompt. "You are a friendly pirate. Answer in nautical style." No weights change.</text>
+  <text x="45" y="146" font-size="11" font-style="italic" fill="#6b7280">Use when: quick style/tone tweaks, one-off customization, or you don't own the model.</text>
+  <text x="45" y="162" font-size="11" font-style="italic" fill="#6b7280">Doesn't work when: model just doesn't know your domain, or you need consistent behavior across users.</text>
+
+  <!-- Row 2: RAG -->
+  <rect x="30" y="180" width="900" height="90" rx="10" fill="#e8f5e2" stroke="#5aa845" stroke-width="1.5"/>
+  <text x="45" y="205" font-size="14" font-weight="bold" fill="#2d5c1e">2. RAG (Retrieval-Augmented Generation)</text>
+  <text x="700" y="205" font-size="11" fill="#2d5c1e" text-anchor="end">✱ no training  •  hours to set up  •  database + model</text>
+  <text x="45" y="228" font-size="12" fill="#2d5c1e">Before answering, look up relevant docs from your own database and paste them into the prompt. Model still doesn't change.</text>
+  <text x="45" y="246" font-size="11" font-style="italic" fill="#6b7280">Use when: you want the model to "know" your private docs; facts change often; you need citations.</text>
+  <text x="45" y="262" font-size="11" font-style="italic" fill="#6b7280">Doesn't work when: you want to change style or behavior; docs are too big to fit in context.</text>
+
+  <!-- Row 3: LoRA fine-tuning (highlighted — this module) -->
+  <rect x="30" y="280" width="900" height="90" rx="10" fill="#fff3c9" stroke="#e08c2f" stroke-width="2.5"/>
+  <text x="45" y="305" font-size="14" font-weight="bold" fill="#7a4408">3. LoRA fine-tuning  ← this module</text>
+  <text x="700" y="305" font-size="11" fill="#7a4408" text-anchor="end">✱ actually updates behavior  •  ~30 min on your Mac  •  tiny adapter file (~10 MB)</text>
+  <text x="45" y="328" font-size="12" fill="#7a4408">Continue training the pretrained model on ~200 of your own examples. Only small "adapter" matrices update.</text>
+  <text x="45" y="346" font-size="11" font-style="italic" fill="#6b7280">Use when: you want consistent style, domain vocabulary, structured output, or persona across many uses.</text>
+  <text x="45" y="362" font-size="11" font-style="italic" fill="#6b7280">Doesn't work when: you need brand-new capabilities the base model can't do at all.</text>
+
+  <!-- Row 4: Full fine-tuning -->
+  <rect x="30" y="380" width="900" height="90" rx="10" fill="#f3e8fd" stroke="#9b59d0" stroke-width="1.5"/>
+  <text x="45" y="405" font-size="14" font-weight="bold" fill="#5b2d85">4. Full fine-tuning</text>
+  <text x="700" y="405" font-size="11" fill="#5b2d85" text-anchor="end">✱ every weight updates  •  hours-days  •  needs 40+ GB RAM</text>
+  <text x="45" y="428" font-size="12" fill="#5b2d85">Update ALL of the model's weights. Best quality when done right, but costly and rarely necessary.</text>
+  <text x="45" y="446" font-size="11" font-style="italic" fill="#6b7280">Use when: you have lots of data and hardware; you're pushing the frontier of what the base can do.</text>
+  <text x="45" y="462" font-size="11" font-style="italic" fill="#7a1d1d">Doesn't fit on your 18 GB Mac — needs ~60 GB unified memory for an 8B model.</text>
+
+  <!-- Row 5: Pretraining from scratch -->
+  <rect x="30" y="480" width="900" height="90" rx="10" fill="#fecaca" stroke="#dc2626" stroke-width="1.5"/>
+  <text x="45" y="505" font-size="14" font-weight="bold" fill="#7a1d1d">5. Pretraining from scratch</text>
+  <text x="700" y="505" font-size="11" fill="#7a1d1d" text-anchor="end">✱ start from random weights  •  weeks-months  •  millions of $</text>
+  <text x="45" y="528" font-size="12" fill="#7a1d1d">Train a new LLM from scratch on trillions of tokens. This is what Alibaba, Meta, and Google do.</text>
+  <text x="45" y="546" font-size="11" font-style="italic" fill="#6b7280">Use when: literally never, unless you are one of those companies.</text>
+  <text x="45" y="562" font-size="11" font-style="italic" fill="#6b7280">The point of fine-tuning is to skip this and reuse someone else's expensive work.</text>
+
+  <text x="480" y="600" font-size="12" font-style="italic" fill="#6b7280" text-anchor="middle">Module 4 focuses on row 3 — the sweet spot for your 18 GB Mac.</text>
+</svg>

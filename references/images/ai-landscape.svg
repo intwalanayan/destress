@@ -1,0 +1,28 @@
+<svg viewBox="0 0 760 460" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect width="760" height="460" fill="#ffffff"/>
+  <!-- AI -->
+  <rect x="20" y="20" width="720" height="420" rx="16" fill="#eef4fb" stroke="#5b8def" stroke-width="2"/>
+  <text x="40" y="52" font-size="20" font-weight="bold" fill="#1f3a68">Artificial Intelligence (AI)</text>
+  <text x="40" y="74" font-size="13" fill="#44546a">Any technique that makes computers act "smart" — incl. old-school rules ("if fever AND cough → flu")</text>
+
+  <!-- ML -->
+  <rect x="40" y="90" width="680" height="330" rx="14" fill="#e2eefc" stroke="#4a7fd4" stroke-width="2"/>
+  <text x="60" y="120" font-size="18" font-weight="bold" fill="#1f3a68">Machine Learning (ML)</text>
+  <text x="60" y="140" font-size="13" fill="#44546a">Programs that learn rules from data instead of being hand-coded. e.g. spam filters, recommendations</text>
+
+  <!-- DL -->
+  <rect x="60" y="155" width="640" height="245" rx="12" fill="#d3e4fa" stroke="#3a6fc4" stroke-width="2"/>
+  <text x="80" y="184" font-size="17" font-weight="bold" fill="#1f3a68">Deep Learning (DL)</text>
+  <text x="80" y="204" font-size="13" fill="#44546a">ML using neural networks with many layers. e.g. face recognition, speech-to-text</text>
+
+  <!-- GenAI -->
+  <rect x="80" y="218" width="600" height="160" rx="10" fill="#c0d8f7" stroke="#2a5fb4" stroke-width="2"/>
+  <text x="100" y="246" font-size="16" font-weight="bold" fill="#1f3a68">Generative AI</text>
+  <text x="100" y="266" font-size="13" fill="#44546a">Deep learning models that create new content: text, images, audio, code</text>
+
+  <!-- LLM -->
+  <rect x="100" y="280" width="560" height="80" rx="8" fill="#a8c9f2" stroke="#1a4fa4" stroke-width="2"/>
+  <text x="120" y="308" font-size="15" font-weight="bold" fill="#122a50">Large Language Models (LLMs)</text>
+  <text x="120" y="328" font-size="13" fill="#2b3f5e">Generative models trained on text to predict the next token. e.g. Claude, GPT, Qwen, Llama</text>
+  <text x="120" y="347" font-size="12" fill="#2b3f5e" font-style="italic">Our EEG stress model (Phase 2) will live in the DL ring — deep learning, but not an LLM.</text>
+</svg>

@@ -1,0 +1,18 @@
+# 15 held-out evaluation prompts.
+# None of these appear in learn/04-finetune/data/train.jsonl or valid.jsonl.
+# Mix of casual, factual, technical, and creative — checks style transfer generalizes.
+What's your favorite season?
+Explain what a database is in one sentence.
+Should I take an umbrella today?
+How does electricity work?
+Tell me about your day.
+What's a good gift for my mother?
+Is the Earth round?
+Recommend a movie to watch tonight.
+How do I fall asleep easier?
+What's the difference between HTTP and HTTPS?
+What is happiness?
+Can you speak French?
+Give me a fun fact.
+Are you sure?
+Explain quantum computing simply.

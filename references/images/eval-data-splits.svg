@@ -1,0 +1,57 @@
+<svg viewBox="0 0 960 520" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect width="960" height="520" fill="#ffffff"/>
+  <text x="480" y="32" font-size="18" font-weight="bold" fill="#1f2937" text-anchor="middle">Split your data into three piles BEFORE training starts — and honor the wall between them</text>
+  <text x="480" y="54" font-size="12" fill="#6b7280" text-anchor="middle">Different jobs for each pile. Never let the test set influence any decision until the very final report.</text>
+
+  <!-- The 100% bar -->
+  <text x="60" y="90" font-size="13" font-weight="bold" fill="#1f2937">Your dataset (say, 1,000 labeled examples):</text>
+
+  <rect x="60" y="105" width="600" height="55" fill="#e2eefc" stroke="#4a7fd4" stroke-width="1.5"/>
+  <text x="240" y="140" font-size="14" font-weight="bold" fill="#1f3a68" text-anchor="middle">TRAIN  (80% = 800 examples)</text>
+
+  <rect x="660" y="105" width="120" height="55" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+  <text x="720" y="132" font-size="12" font-weight="bold" fill="#78350f" text-anchor="middle">VAL</text>
+  <text x="720" y="150" font-size="11" fill="#78350f" text-anchor="middle">10% = 100</text>
+
+  <rect x="780" y="105" width="120" height="55" fill="#fecaca" stroke="#dc2626" stroke-width="1.5"/>
+  <text x="840" y="132" font-size="12" font-weight="bold" fill="#7a1d1d" text-anchor="middle">TEST</text>
+  <text x="840" y="150" font-size="11" fill="#7a1d1d" text-anchor="middle">10% = 100</text>
+
+  <!-- Their jobs -->
+  <text x="60" y="200" font-size="13" font-weight="bold" fill="#1f2937">What each pile is for:</text>
+
+  <!-- TRAIN -->
+  <rect x="60" y="215" width="270" height="140" rx="8" fill="#f0f7ff" stroke="#4a7fd4"/>
+  <text x="195" y="238" font-size="13" font-weight="bold" fill="#1f3a68" text-anchor="middle">TRAIN</text>
+  <text x="75" y="260" font-size="11" fill="#1f3a68">Model actually learns from these.</text>
+  <text x="75" y="278" font-size="11" fill="#1f3a68">The training loop's forward-loss-</text>
+  <text x="75" y="294" font-size="11" fill="#1f3a68">backward-optimizer cycle updates</text>
+  <text x="75" y="310" font-size="11" fill="#1f3a68">weights based on these examples.</text>
+  <text x="75" y="336" font-size="11" font-style="italic" fill="#6b7280">You can look at these whenever.</text>
+
+  <!-- VAL -->
+  <rect x="345" y="215" width="270" height="140" rx="8" fill="#fff8e6" stroke="#d97706"/>
+  <text x="480" y="238" font-size="13" font-weight="bold" fill="#78350f" text-anchor="middle">VALIDATION</text>
+  <text x="360" y="260" font-size="11" fill="#78350f">Watched DURING training to spot</text>
+  <text x="360" y="278" font-size="11" fill="#78350f">overfitting; used to tune knobs</text>
+  <text x="360" y="294" font-size="11" fill="#78350f">(learning rate, iters, LoRA rank)</text>
+  <text x="360" y="310" font-size="11" fill="#78350f">and pick the best checkpoint.</text>
+  <text x="360" y="336" font-size="11" font-style="italic" fill="#6b7280">Look at loss numbers, not raw data.</text>
+
+  <!-- TEST -->
+  <rect x="630" y="215" width="270" height="140" rx="8" fill="#fef2f2" stroke="#dc2626"/>
+  <text x="765" y="238" font-size="13" font-weight="bold" fill="#7a1d1d" text-anchor="middle">TEST</text>
+  <text x="645" y="260" font-size="11" fill="#7a1d1d">Touched ONCE, at the very end,</text>
+  <text x="645" y="278" font-size="11" fill="#7a1d1d">to report the final honest number.</text>
+  <text x="645" y="294" font-size="11" fill="#7a1d1d">Never used for any decisions</text>
+  <text x="645" y="310" font-size="11" fill="#7a1d1d">during training or tuning.</text>
+  <text x="645" y="336" font-size="11" font-weight="bold" fill="#7a1d1d">Data hygiene = quarantined pile.</text>
+
+  <!-- Wall metaphor -->
+  <rect x="60" y="380" width="840" height="120" rx="10" fill="#fff8e6" stroke="#e08c2f" stroke-width="1.5"/>
+  <text x="80" y="405" font-size="14" font-weight="bold" fill="#7a4408">Why the wall matters — the exam analogy</text>
+  <text x="80" y="428" font-size="12" fill="#7a4408">Imagine train / val / test as: practice problems / mock exams / the real exam.</text>
+  <text x="90" y="446" font-size="12" fill="#7a4408">• If you peek at the <tspan font-weight="bold">real exam</tspan> beforehand, your score no longer reflects your real ability.</text>
+  <text x="90" y="462" font-size="12" fill="#7a4408">• Every time you use <tspan font-weight="bold">test data</tspan> to decide anything — pick a model, tune a knob — you leak information about it into your training loop.</text>
+  <text x="90" y="480" font-size="12" fill="#7a4408">• Val set fills the middle role: enough looking to tune, but held back enough to still give useful signal.</text>
+</svg>

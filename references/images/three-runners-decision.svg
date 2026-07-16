@@ -1,0 +1,85 @@
+<svg viewBox="0 0 940 580" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect width="940" height="580" fill="#ffffff"/>
+  <text x="470" y="32" font-size="18" font-weight="bold" fill="#1f2937" text-anchor="middle">The three tools we'll use — pick by what you're doing</text>
+
+  <!-- LM STUDIO -->
+  <rect x="30" y="60" width="285" height="330" rx="12" fill="#f3e8fd" stroke="#9b59d0" stroke-width="2"/>
+  <text x="172" y="88" font-size="16" font-weight="bold" fill="#5b2d85" text-anchor="middle">LM Studio</text>
+  <text x="172" y="108" font-size="11" fill="#5b2d85" text-anchor="middle">Desktop GUI app</text>
+
+  <line x1="45" y1="120" x2="300" y2="120" stroke="#c4b5fd"/>
+
+  <text x="45" y="145" font-size="12" font-weight="bold" fill="#5b2d85">Best for</text>
+  <text x="55" y="163" font-size="11" fill="#5b2d85">• Exploring &amp; chatting</text>
+  <text x="55" y="180" font-size="11" fill="#5b2d85">• Browsing models visually</text>
+  <text x="55" y="197" font-size="11" fill="#5b2d85">• Comparing quantizations</text>
+  <text x="55" y="214" font-size="11" fill="#5b2d85">• MLX runtime built-in</text>
+
+  <text x="45" y="245" font-size="12" font-weight="bold" fill="#5b2d85">Feels like</text>
+  <text x="55" y="263" font-size="11" fill="#5b2d85">A polished chat app</text>
+  <text x="55" y="279" font-size="11" fill="#5b2d85">for local models</text>
+
+  <text x="45" y="310" font-size="12" font-weight="bold" fill="#7a4408">Less good for</text>
+  <text x="55" y="328" font-size="11" fill="#5b2d85">• Scripting / automation</text>
+  <text x="55" y="345" font-size="11" fill="#5b2d85">• Headless server use</text>
+
+  <text x="172" y="378" font-size="11" font-style="italic" fill="#5b2d85" text-anchor="middle">Layer 4 — human GUI</text>
+
+  <!-- OLLAMA -->
+  <rect x="325" y="60" width="285" height="330" rx="12" fill="#e2eefc" stroke="#4a7fd4" stroke-width="2"/>
+  <text x="467" y="88" font-size="16" font-weight="bold" fill="#1f3a68" text-anchor="middle">Ollama</text>
+  <text x="467" y="108" font-size="11" fill="#1f3a68" text-anchor="middle">CLI + local HTTP API server</text>
+
+  <line x1="340" y1="120" x2="595" y2="120" stroke="#93c5fd"/>
+
+  <text x="340" y="145" font-size="12" font-weight="bold" fill="#1f3a68">Best for</text>
+  <text x="350" y="163" font-size="11" fill="#1f3a68">• Calling models from code</text>
+  <text x="350" y="180" font-size="11" fill="#1f3a68">• OpenAI-compatible API</text>
+  <text x="350" y="197" font-size="11" fill="#1f3a68">• Scripting &amp; automation</text>
+  <text x="350" y="214" font-size="11" fill="#1f3a68">• Simple: `ollama run …`</text>
+
+  <text x="340" y="245" font-size="12" font-weight="bold" fill="#1f3a68">Feels like</text>
+  <text x="350" y="263" font-size="11" fill="#1f3a68">Docker for LLMs — pull,</text>
+  <text x="350" y="279" font-size="11" fill="#1f3a68">run, serve, done.</text>
+
+  <text x="340" y="310" font-size="12" font-weight="bold" fill="#7a4408">Less good for</text>
+  <text x="350" y="328" font-size="11" fill="#1f3a68">• Custom training / fine-tune</text>
+  <text x="350" y="345" font-size="11" fill="#1f3a68">• Deep inspection</text>
+
+  <text x="467" y="378" font-size="11" font-style="italic" fill="#1f3a68" text-anchor="middle">Layer 3 — model runner</text>
+
+  <!-- MLX-LM -->
+  <rect x="620" y="60" width="285" height="330" rx="12" fill="#e8f5e2" stroke="#5aa845" stroke-width="2"/>
+  <text x="762" y="88" font-size="16" font-weight="bold" fill="#2d5c1e" text-anchor="middle">MLX-LM</text>
+  <text x="762" y="108" font-size="11" fill="#2d5c1e" text-anchor="middle">Python library (Apple)</text>
+
+  <line x1="635" y1="120" x2="890" y2="120" stroke="#86efac"/>
+
+  <text x="635" y="145" font-size="12" font-weight="bold" fill="#2d5c1e">Best for</text>
+  <text x="645" y="163" font-size="11" fill="#2d5c1e">• Fine-tuning (Module 4)</text>
+  <text x="645" y="180" font-size="11" fill="#2d5c1e">• Max speed on Apple Si</text>
+  <text x="645" y="197" font-size="11" fill="#2d5c1e">• Python-native access</text>
+  <text x="645" y="214" font-size="11" fill="#2d5c1e">• Direct MLX format use</text>
+
+  <text x="635" y="245" font-size="12" font-weight="bold" fill="#2d5c1e">Feels like</text>
+  <text x="645" y="263" font-size="11" fill="#2d5c1e">A Python library —</text>
+  <text x="645" y="279" font-size="11" fill="#2d5c1e">import, load, generate.</text>
+
+  <text x="635" y="310" font-size="12" font-weight="bold" fill="#7a4408">Less good for</text>
+  <text x="645" y="328" font-size="11" fill="#2d5c1e">• Casual chatting</text>
+  <text x="645" y="345" font-size="11" fill="#2d5c1e">• Non-Apple portability</text>
+
+  <text x="762" y="378" font-size="11" font-style="italic" fill="#2d5c1e" text-anchor="middle">Layer 2/3 — framework + runner</text>
+
+  <!-- WARNING BOX -->
+  <rect x="30" y="410" width="875" height="70" rx="10" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+  <text x="50" y="435" font-size="14" font-weight="bold" fill="#78350f">⚠ Important for your 18 GB Mac</text>
+  <text x="50" y="456" font-size="11" fill="#78350f">Ollama's fast MLX backend needs <tspan font-weight="bold">32 GB+</tspan> unified memory (announced Mar 2026, v0.19). On 18 GB, Ollama falls back to <tspan font-weight="bold">llama.cpp / Metal</tspan> automatically</text>
+  <text x="50" y="472" font-size="11" fill="#78350f">— still GPU-accelerated, just ~15-40% slower than MLX. For the fastest inference, use <tspan font-weight="bold">LM Studio's MLX runtime</tspan> or <tspan font-weight="bold">MLX-LM directly</tspan>.</text>
+
+  <!-- QUICK DECISION -->
+  <rect x="30" y="495" width="875" height="70" rx="10" fill="#f0f7ff" stroke="#4a7fd4" stroke-width="1.5"/>
+  <text x="50" y="518" font-size="13" font-weight="bold" fill="#1f3a68">Quick decision guide (we'll use all three in Module 1):</text>
+  <text x="50" y="537" font-size="11" fill="#1f3a68">Just chatting &amp; exploring? → <tspan font-weight="bold">LM Studio</tspan>. Writing code that calls a model? → <tspan font-weight="bold">Ollama</tspan> (its HTTP API is trivial to hit).</text>
+  <text x="50" y="553" font-size="11" fill="#1f3a68">Fine-tuning, or squeezing max speed on Apple Silicon? → <tspan font-weight="bold">MLX-LM</tspan>. Big picture: LM Studio for humans, Ollama for code, MLX-LM for training.</text>
+</svg>

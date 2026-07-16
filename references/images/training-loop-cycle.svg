@@ -1,0 +1,57 @@
+<svg viewBox="0 0 960 640" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect width="960" height="640" fill="#ffffff"/>
+  <text x="480" y="32" font-size="18" font-weight="bold" fill="#1f2937" text-anchor="middle">The training loop — the single most important idea in ML</text>
+  <text x="480" y="54" font-size="12" fill="#6b7280" text-anchor="middle">One iteration = one trip around this cycle. Millions of iterations turn random weights into a useful model.</text>
+
+  <defs>
+    <marker id="ar" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L9,3 L0,6 Z" fill="#4a7fd4"/>
+    </marker>
+  </defs>
+
+  <!-- 4 boxes in a cycle -->
+  <!-- TOP: Forward pass -->
+  <rect x="360" y="90" width="240" height="90" rx="10" fill="#e2eefc" stroke="#4a7fd4" stroke-width="2"/>
+  <text x="480" y="115" font-size="14" font-weight="bold" fill="#1f3a68" text-anchor="middle">1. FORWARD PASS</text>
+  <text x="480" y="136" font-size="11" fill="#1f3a68" text-anchor="middle">Feed input through the network.</text>
+  <text x="480" y="152" font-size="11" fill="#1f3a68" text-anchor="middle">Get a prediction.</text>
+  <text x="480" y="170" font-size="10" font-style="italic" fill="#6b7280" text-anchor="middle">e.g. hours=7 → model predicts score=45</text>
+
+  <!-- RIGHT: Compute loss -->
+  <rect x="700" y="270" width="240" height="90" rx="10" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <text x="820" y="295" font-size="14" font-weight="bold" fill="#78350f" text-anchor="middle">2. COMPUTE LOSS</text>
+  <text x="820" y="316" font-size="11" fill="#78350f" text-anchor="middle">Measure how wrong the prediction is</text>
+  <text x="820" y="332" font-size="11" fill="#78350f" text-anchor="middle">vs. the true answer. One number.</text>
+  <text x="820" y="350" font-size="10" font-style="italic" fill="#6b7280" text-anchor="middle">actual=65, predicted=45  →  loss = (65-45)² = 400</text>
+
+  <!-- BOTTOM: Backward pass -->
+  <rect x="360" y="450" width="240" height="90" rx="10" fill="#f3e8fd" stroke="#9b59d0" stroke-width="2"/>
+  <text x="480" y="475" font-size="14" font-weight="bold" fill="#5b2d85" text-anchor="middle">3. BACKWARD PASS</text>
+  <text x="480" y="496" font-size="11" fill="#5b2d85" text-anchor="middle">Work backward from the loss.</text>
+  <text x="480" y="512" font-size="11" fill="#5b2d85" text-anchor="middle">Figure out: how to nudge each weight.</text>
+  <text x="480" y="530" font-size="10" font-style="italic" fill="#6b7280" text-anchor="middle">"increase w by 0.3, decrease b by 0.1"</text>
+
+  <!-- LEFT: Optimizer step -->
+  <rect x="20" y="270" width="240" height="90" rx="10" fill="#e8f5e2" stroke="#5aa845" stroke-width="2"/>
+  <text x="140" y="295" font-size="14" font-weight="bold" fill="#2d5c1e" text-anchor="middle">4. OPTIMIZER STEP</text>
+  <text x="140" y="316" font-size="11" fill="#2d5c1e" text-anchor="middle">Actually apply the nudges to</text>
+  <text x="140" y="332" font-size="11" fill="#2d5c1e" text-anchor="middle">every weight in the network.</text>
+  <text x="140" y="350" font-size="10" font-style="italic" fill="#6b7280" text-anchor="middle">w: 4.7 → 5.0,   b: 32.1 → 32.0</text>
+
+  <!-- Arrows between boxes -->
+  <path d="M 600 135 Q 800 145, 760 270" fill="none" stroke="#4a7fd4" stroke-width="2.5" marker-end="url(#ar)"/>
+  <path d="M 700 360 Q 620 460, 600 465" fill="none" stroke="#4a7fd4" stroke-width="2.5" marker-end="url(#ar)"/>
+  <path d="M 360 495 Q 160 460, 200 360" fill="none" stroke="#4a7fd4" stroke-width="2.5" marker-end="url(#ar)"/>
+  <path d="M 260 290 Q 260 130, 360 135" fill="none" stroke="#4a7fd4" stroke-width="2.5" marker-end="url(#ar)"/>
+
+  <!-- Center label -->
+  <circle cx="480" cy="315" r="60" fill="#fff8e6" stroke="#e08c2f" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="480" y="308" font-size="12" font-weight="bold" fill="#7a4408" text-anchor="middle">ONE iteration</text>
+  <text x="480" y="325" font-size="11" fill="#7a4408" text-anchor="middle">= one loop</text>
+  <text x="480" y="345" font-size="10" font-style="italic" fill="#7a4408" text-anchor="middle">repeat 1000s of times</text>
+
+  <!-- Bottom explanatory box -->
+  <rect x="30" y="570" width="900" height="55" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/>
+  <text x="50" y="592" font-size="13" font-weight="bold" fill="#1f2937">In one sentence:</text>
+  <text x="50" y="613" font-size="12" fill="#1f2937">Every training iteration <tspan font-weight="bold">makes a prediction, measures the error, works out how to fix it, and takes one small step toward the fix.</tspan></text>
+</svg>

@@ -1,0 +1,85 @@
+<svg viewBox="0 0 900 900" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect width="900" height="900" fill="#ffffff"/>
+  <text x="450" y="32" font-size="18" font-weight="bold" fill="#1f2937" text-anchor="middle">What peek_logits.py actually does, step by step</text>
+  <text x="450" y="54" font-size="12" fill="#6b7280" text-anchor="middle">Follow the numbers as they change shape from a sentence to a top-10 list.</text>
+
+  <defs>
+    <marker id="ar" markerWidth="9" markerHeight="9" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+
+  <!-- STEP 1: Text -->
+  <rect x="240" y="80" width="420" height="50" rx="8" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+  <text x="450" y="98" font-size="11" fill="#78350f" text-anchor="middle">STEP 1 — Your prompt (a string)</text>
+  <text x="450" y="118" font-size="13" font-family="Menlo, monospace" fill="#78350f" text-anchor="middle">"The capital of France is"</text>
+
+  <line x1="450" y1="132" x2="450" y2="155" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ar)"/>
+  <text x="465" y="148" font-size="10" fill="#6b7280">tokenizer.encode(prompt)</text>
+
+  <!-- STEP 2: Token IDs -->
+  <rect x="240" y="160" width="420" height="60" rx="8" fill="#e2eefc" stroke="#4a7fd4" stroke-width="1.5"/>
+  <text x="450" y="178" font-size="11" fill="#1f3a68" text-anchor="middle">STEP 2 — A flat list of ~5 integer IDs</text>
+  <text x="450" y="198" font-size="13" font-family="Menlo, monospace" fill="#1f3a68" text-anchor="middle">[576, 6722, 315, 9822, 374]</text>
+  <text x="450" y="214" font-size="10" fill="#6b7280" text-anchor="middle">shape = (5,)  → "5 numbers in a row"</text>
+
+  <line x1="450" y1="222" x2="450" y2="245" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ar)"/>
+  <text x="465" y="238" font-size="10" fill="#6b7280">mx.array(ids)[None]  ← wraps the list in an extra layer</text>
+
+  <!-- STEP 3: Batch dim added -->
+  <rect x="240" y="250" width="420" height="60" rx="8" fill="#e2eefc" stroke="#4a7fd4" stroke-width="1.5"/>
+  <text x="450" y="268" font-size="11" fill="#1f3a68" text-anchor="middle">STEP 3 — Same numbers, wrapped as a "batch of 1"</text>
+  <text x="450" y="288" font-size="13" font-family="Menlo, monospace" fill="#1f3a68" text-anchor="middle">[ [576, 6722, 315, 9822, 374] ]</text>
+  <text x="450" y="304" font-size="10" fill="#6b7280" text-anchor="middle">shape = (1, 5)  → "1 row, 5 columns"</text>
+
+  <line x1="450" y1="312" x2="450" y2="345" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ar)"/>
+  <text x="465" y="330" font-size="10" fill="#6b7280">model(input_ids)  ← ONE FORWARD PASS through all 36 layers</text>
+
+  <!-- STEP 4: Logits 3D -->
+  <rect x="180" y="350" width="540" height="80" rx="8" fill="#f3e8fd" stroke="#9b59d0" stroke-width="1.5"/>
+  <text x="450" y="368" font-size="11" fill="#5b2d85" text-anchor="middle">STEP 4 — A 3D block of raw scores ("logits")</text>
+  <text x="450" y="388" font-size="13" font-family="Menlo, monospace" fill="#5b2d85" text-anchor="middle">shape = (1, 5, 152000)</text>
+  <text x="450" y="405" font-size="11" fill="#5b2d85" text-anchor="middle">for each of the 1 prompt in the batch,</text>
+  <text x="450" y="420" font-size="11" fill="#5b2d85" text-anchor="middle">for each of the 5 positions, one raw score per vocab word (152K of them)</text>
+
+  <line x1="450" y1="432" x2="450" y2="465" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ar)"/>
+  <text x="465" y="450" font-size="10" fill="#6b7280">logits[0, -1, :]  ← pick position [0]=first batch, [-1]=last token, [:]=all vocab</text>
+
+  <!-- STEP 5: 1D slice -->
+  <rect x="240" y="470" width="420" height="60" rx="8" fill="#f3e8fd" stroke="#9b59d0" stroke-width="1.5"/>
+  <text x="450" y="488" font-size="11" fill="#5b2d85" text-anchor="middle">STEP 5 — Slice out only the LAST position's scores (that predicts the next token)</text>
+  <text x="450" y="508" font-size="13" font-family="Menlo, monospace" fill="#5b2d85" text-anchor="middle">[8.42, -3.90, 6.13, ..., -1.20]</text>
+  <text x="450" y="524" font-size="10" fill="#6b7280" text-anchor="middle">shape = (152000,)  → "flat list of 152K raw scores"</text>
+
+  <line x1="450" y1="532" x2="450" y2="565" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ar)"/>
+  <text x="465" y="550" font-size="10" fill="#6b7280">mx.softmax(...)  ← turn arbitrary scores into probabilities that sum to 1</text>
+
+  <!-- STEP 6: Softmax → probabilities -->
+  <rect x="240" y="570" width="420" height="60" rx="8" fill="#e8f5e2" stroke="#5aa845" stroke-width="1.5"/>
+  <text x="450" y="588" font-size="11" fill="#2d5c1e" text-anchor="middle">STEP 6 — Same 152K numbers, but now they're probabilities</text>
+  <text x="450" y="608" font-size="13" font-family="Menlo, monospace" fill="#2d5c1e" text-anchor="middle">[0.001, 0.00001, 0.92, ...]  (sums to 1.0)</text>
+  <text x="450" y="624" font-size="10" fill="#6b7280" text-anchor="middle">shape = (152000,)  → same shape, meaning has changed</text>
+
+  <line x1="450" y1="632" x2="450" y2="665" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ar)"/>
+  <text x="465" y="650" font-size="10" fill="#6b7280">mx.argsort(-probs)[:10]  ← indices sorted by prob (descending), keep first 10</text>
+
+  <!-- STEP 7: Top-10 indices -->
+  <rect x="240" y="670" width="420" height="60" rx="8" fill="#e8f5e2" stroke="#5aa845" stroke-width="1.5"/>
+  <text x="450" y="688" font-size="11" fill="#2d5c1e" text-anchor="middle">STEP 7 — The 10 vocab word IDs with the highest probability</text>
+  <text x="450" y="708" font-size="13" font-family="Menlo, monospace" fill="#2d5c1e" text-anchor="middle">[13056, 8302, 5119, 2154, ...]  (10 integers)</text>
+  <text x="450" y="724" font-size="10" fill="#6b7280" text-anchor="middle">shape = (10,)</text>
+
+  <line x1="450" y1="732" x2="450" y2="770" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ar)"/>
+  <text x="465" y="755" font-size="10" fill="#6b7280">for each id: tokenizer.decode([id]) + look up its prob + print bar</text>
+
+  <!-- STEP 8: Final output -->
+  <rect x="140" y="775" width="620" height="105" rx="8" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+  <text x="450" y="795" font-size="11" fill="#78350f" text-anchor="middle">STEP 8 — Pretty terminal output (what you see)</text>
+  <g font-family="Menlo, monospace" font-size="11" fill="#78350f">
+    <text x="180" y="815">Paris   92.3%   ██████████████████████████████████████████████</text>
+    <text x="180" y="830">Rome     1.8%   █</text>
+    <text x="180" y="845">Lyon     0.9%</text>
+    <text x="180" y="860">…</text>
+  </g>
+  <text x="450" y="876" font-size="10" font-style="italic" fill="#6b7280" text-anchor="middle">One forward pass reveals the entire distribution the sampler picks from.</text>
+</svg>
