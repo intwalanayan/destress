@@ -1,7 +1,7 @@
 # Phase 1 — Learning Knowledge Base
 
 > Module content is appended here as you request each module.
-> Syllabus/overview: [docs/26-07-tutorial.md](../docs/26-07-tutorial.md)
+> Syllabus/overview: [docs/2026-07-tutorial.md](../docs/2026-07-tutorial.md)
 > Structure: modules = `##`, sections & your follow-up questions = `###`.
 
 ## Module 0 — Setup & the mental model
@@ -3237,7 +3237,7 @@ I've updated the curl example in Step 6 as well.
 
 - If you started the server with `--model X`, pass `model: X` in requests.
 - Look at the server's startup log — it prints "Loading model from …". Copy that path.
-- If in doubt, use an absolute path everywhere (`--model /Users/nayan/destress/learn/04-finetune/qwen3-pirate`) — no ambiguity about relative paths from the server's working directory.
+- If in doubt, use an absolute path everywhere (`--model /path/to/destress/learn/04-finetune/qwen3-pirate`) — no ambiguity about relative paths from the server's working directory.
 
 Rerun the client — should stream pirate responses now.
 
