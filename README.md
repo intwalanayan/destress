@@ -131,7 +131,7 @@ If you fork this repo to teach yourself, an AI assistant reading `AGENTS.md` wil
 
 ## License
 
-No license file yet — GitHub's default (**all rights reserved**) applies until one is added. If you want to reuse or adapt this work, please open an issue. A future permissive license (MIT or Apache-2.0) is likely.
+**MIT License** — see [`LICENSE`](LICENSE). Free to use, modify, and redistribute (including commercially); attribution required.
 
 ## Credits & references
 
